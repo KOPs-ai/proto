@@ -23,6 +23,8 @@ message SupplyERC20Response {
 message SuppliedBalanceRequest {
   string userAddress = 1;
   string tokenAddress = 2; // supplied token address
+  int64 ChainID =3;
+  string poolAddress= 4;
 }
 
 message SuppliedBalanceResponse {
