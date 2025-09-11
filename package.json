@@ -1,0 +1,32 @@
+{
+  "name": "@donleeit/protos",
+  "version": "1.0.6",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "don",
+  "files": [
+    "pb",
+    "proto"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "gen": "npx protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./pb/typescript --proto_path=./proto ./proto/**/*.proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=nestJs=true",
+    "build": "rm -rf pb/typescript && mkdir -p pb/typescript && yarn gen && tsc -p tsconfig.json",
+    "publish:proto": "npm publish --access public"
+  },
+  "devDependencies": {
+    "glob": "^11.0.3"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/microservices": "^11.1.6",
+    "rxjs": "^7.8.2",
+    "ts-proto": "^2.7.7",
+    "typescript": "^5.9.2"
+  }
+}

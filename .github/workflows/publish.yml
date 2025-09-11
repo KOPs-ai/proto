@@ -1,0 +1,46 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build package
+        run: yarn build
+
+      - name: Check if version already exists
+        id: check
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          PKG_NAME=$(node -p "require('./package.json').name")
+          echo "Package: $PKG_NAME@$PACKAGE_VERSION"
+
+          if npm view $PKG_NAME@$PACKAGE_VERSION > /dev/null 2>&1; then
+            echo "Version already exists, skipping publish."
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish to npm
+        if: steps.check.outputs.exists == 'false'
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

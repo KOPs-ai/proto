@@ -1,0 +1,18 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "target": "ES2020",
+    "sourceMap": true,
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "verbatimModuleSyntax": false
+  },
+  "include": ["**/*.ts", "**/*.proto"]
+}
