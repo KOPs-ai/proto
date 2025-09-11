@@ -1,6 +1,6 @@
 {
   "name": "@donleeit/protos",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "publish:proto": "npm publish --access public"
   },
   "devDependencies": {
-    "glob": "^11.0.4"
+    "glob": "^11.0.3"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.4",
