@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package strategyActivity;
+import "google/protobuf/any.proto";
+
+option go_package = "pb/go/strategyActivity;strategyActivity";
+
+// {
+//     "walletAddress": "0xC0fcFAd6a5db86F566102B8a7115823068a93c50",
+//     "strategyId": "68c101d5e04b20290589e75f",
+//     "stepId": "",
+//     "action": "deposit",
+//     "title": "deposit 200USDC",
+//     "status": "success",
+//     "data": {
+//         "poolAddress": "0xb125E6687d4313864e53df431d5425969c15Eb2F",
+//         "assetAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
+//     }
+// }
+message Activity {
+    string walletAddress = 1;
+    string strategyId = 2;
+    string stepId = 3;
+    string action = 4;
+    string title = 5;
+    string status = 6;
+    google.protobuf.Any data = 7;
+}
+
+message GetActivityRequest {
+  int64 page = 1;
+  int64 pageSize = 2;
+}
+
+message GetActivityResponse {
+    repeated Activity activities = 1;
+    int64 total = 2;
+}

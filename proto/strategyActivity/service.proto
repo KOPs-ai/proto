@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package strategyActivity;
+import "strategyActivity/models/getActivity.proto";
+import "strategyActivity/models/submitActivity.proto";
+
+option go_package = "pb/go/strategyActivity;strategyActivity";
+
+service StrategyActivityService {
+  rpc GetStrategyActivity(GetActivityRequest) returns (GetActivityResponse) {};
+  rpc SubmitActivity(SubmitActivityRequest) returns (SubmitActivityResponse) {};
+}

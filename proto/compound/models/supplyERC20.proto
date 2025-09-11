@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package compound;
+
+option go_package = "pb/go/compound;compound";
+
+message SupplyERC20Request {
+  string userAddress = 1;
+  string strategyId = 2;
+  string amount = 3;
+  string assetAddress = 4;
+  string orchestratorAddress = 5;
+}
+
+message SupplyERC20Response {
+  int64 chainId = 1;
+  string txHash = 2;
+  string amount = 3;
+}
+
+message SuppliedBalanceRequest {
+  string userAddress = 1;
+  string tokenAddress = 2; // supplied token address
+}
+
+message SuppliedBalanceResponse {
+  string tokenAddress = 1;
+  string supply_balance = 2;
+  string borrow_balance = 3;
+}
