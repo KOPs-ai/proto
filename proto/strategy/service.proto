@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package strategy;
+import "strategy/models/strategy.proto";
+import "strategy/models/permission.proto";
+
+option go_package = "pb/go/strategy;strategy";
+
+service StrategyService {
+  rpc GetStrategyList(GetStrategyListRequest)
+      returns (GetStrategyListResponse) {};
+
+  rpc GetPermission(GetPermissionRequest) returns (GetPermissionResponse) {};
+  rpc UpdatePermission(UpdatePermissionRequest)
+      returns (UpdatePermissionResponse) {};
+
+  rpc StartStrategy(StartStrategyRequest) returns (StartStrategyResponse) {};
+
+  rpc WithdrawStrategy(WithdrawStrategyRequest)
+      returns (WithdrawStrategyResponse) {};
+}
