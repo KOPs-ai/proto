@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package compound;
+
+option go_package = "pb/go/compound;compound";
+
+message GetAPRRequest {}
+
+message GetAPRResponse {
+  string supplyAPR = 1;
+  string borrowAPR = 2;
+}

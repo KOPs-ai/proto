@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package strategyActivity;
+import "strategyActivity/models/getActivity.proto";
+
+option go_package = "pb/go/strategyActivity;strategyActivity";
+
+message SubmitActivityRequest {
+  Activity activity = 1;
+}
+
+message SubmitActivityResponse {
+  string msg = 1;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package compound;
+
+option go_package = "pb/go/compound;compound";
+
+message WithdrawERC20Request {
+  string userAddress = 1;
+  string strategyId = 2;
+  string assetAddress = 3;
+  string amount = 4;
+  string orchestratorAddress = 5;
+}
+
+message WithdrawERC20Response {
+  int64 chainId = 1;
+  string txHash = 2;
+  string amount = 3;
+}
