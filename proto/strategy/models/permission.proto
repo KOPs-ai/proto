@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package strategy;
+option go_package = "pb/go/strategy;strategy";
+import "strategy/models/strategy.proto";
+import "google/protobuf/struct.proto";
+
+message GetPermissionRequest { string strategyId = 1; }
+
+message PermissionAction {
+  optional string id = 1;
+  string protocol = 2;
+  string chainId = 3;
+  string fnName = 4;
+  string actionTargetSelector = 5;
+  string actionTarget = 6;
+  string actionPolicies = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
+
+message PermissionInfo {
+  string sessionSigner = 1;
+  string chainId = 2;
+  repeated PermissionAction actions = 3;
+  FeeToken feeToken = 4;
+}
+
+message GetPermissionResponse {
+  int64 code = 1;
+  string msg = 2;
+  PermissionInfo data = 3;
+}
+
+message UpdatePermissionRequest {
+  string userAddress = 1;
+  string strategyId = 2;
+  string orchestratorAddress = 3;
+  repeated google.protobuf.Struct sessionDetail = 4;
+}
+
+message UpdatePermissionResponse {
+  int64 code = 1;
+  string msg = 2;
+}

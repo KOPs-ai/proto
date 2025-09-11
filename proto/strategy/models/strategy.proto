@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package strategy;
+option go_package = "pb/go/strategy;strategy";
+import "strategy/models/protocol.proto";
+import "strategy/models/asset.proto";
+
+message GetStrategyListRequest {}
+
+message FeeToken {
+  string address = 1;
+  string chainId = 2;
+}
+
+message StrategyInfo {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  repeated ProtocolInfo protocols = 4;
+  repeated AssetInfo assets = 5;
+  bool isActive = 6;
+  string logo = 7;
+  string status = 8;
+  string sessionSignerAddress = 9;
+  string chainId = 10;
+  repeated string actionIds = 11;
+  FeeToken feeToken = 12;
+  string inputToken = 13;
+  string createdAt = 14;
+  string updatedAt = 15;
+}
+
+message GetStrategyListResponse {
+  int64 code = 1;
+  string msg = 2;
+  repeated StrategyInfo data = 3;
+}
+
+message StartStrategyRequest {
+  string strategyId = 1;
+  string userAddress = 2;
+  string txHash = 3;
+}
+
+message StartStrategyResponseData { string amount = 1; }
+
+message StartStrategyResponse {
+  int64 code = 1;
+  string msg = 2;
+  StartStrategyResponseData data = 3;
+}
+
+message WithdrawStrategyRequest {
+  string strategyId = 1;
+  string userAddress = 2;
+}
+
+message WithdrawStrategyResponse {
+  int64 code = 1;
+  string msg = 2;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package strategy;
+option go_package = "pb/go/strategy;strategy";
+
+message ProtocolInfo {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string protocol = 4;
+  string link = 5;
+  string logo = 6;
+}

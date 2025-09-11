@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package strategy;
+option go_package = "pb/go/strategy;strategy";
+
+message AssetInfo {
+  string id = 1;
+  string name = 2;
+  string chainName = 3;
+  string chainId = 4;
+  string tokenAddress = 5;
+  int64 tokenDecimals = 6;
+  string tokenSymbol = 7;
+  string logo = 8;
+  string minAmount = 9;
+  string maxAmount = 10;
+  string createdAt = 11;
+  string updatedAt = 12;
+}

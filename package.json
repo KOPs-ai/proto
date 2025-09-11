@@ -18,7 +18,7 @@
     "publish:proto": "npm publish --access public"
   },
   "devDependencies": {
-    "glob": "^11.0.3"
+    "glob": "^11.0.4"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.13.4",
