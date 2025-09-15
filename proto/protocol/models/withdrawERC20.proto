@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package protocol;
+
+option go_package = "pb/go/protocol;protocol";
+
+message BorrowedBalanceRequest {
+  string userAddress = 1;
+  string tokenAddress = 2; // supplied token address
+  int64 ChainID = 3;
+  string poolAddress = 4;
+}
+
+message BorrowedBalanceResponse {
+  string tokenAddress = 1;
+  string balance = 2;
+  string decimals = 3;
+}
