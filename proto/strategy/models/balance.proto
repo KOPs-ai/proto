@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package strategy;
+
+option go_package = "pb/go/strategy;strategy";
+
+message GetProtocolBalanceRequest {
+  string strategyId = 1;
+  string userAddress = 2;
+  string chainId = 3;
+}
+
+message ProtocolBalanceInfo {
+  string type = 1;
+  string protocolName = 2;
+  string tokenAddress = 3;
+  string amount = 4;
+  string decimals = 5;
+  string action = 6;
+}
+
+message GetProtocolBalanceResponse {
+  int64 code = 1;
+  string msg = 2;
+  repeated ProtocolBalanceInfo data = 3;
+}

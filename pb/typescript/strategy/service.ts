@@ -8,6 +8,7 @@
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 import { GetAPYRequest, GetAPYResponse } from "./models/apy";
+import { GetProtocolBalanceRequest, GetProtocolBalanceResponse } from "./models/balance";
 import {
   GetPermissionRequest,
   GetPermissionResponse,
@@ -39,6 +40,8 @@ export interface StrategyServiceClient {
   withdrawStrategy(request: WithdrawStrategyRequest): Observable<WithdrawStrategyResponse>;
 
   getApy(request: GetAPYRequest): Observable<GetAPYResponse>;
+
+  getProtocolBalance(request: GetProtocolBalanceRequest): Observable<GetProtocolBalanceResponse>;
 }
 
 export interface StrategyServiceController {
@@ -63,6 +66,10 @@ export interface StrategyServiceController {
   ): Promise<WithdrawStrategyResponse> | Observable<WithdrawStrategyResponse> | WithdrawStrategyResponse;
 
   getApy(request: GetAPYRequest): Promise<GetAPYResponse> | Observable<GetAPYResponse> | GetAPYResponse;
+
+  getProtocolBalance(
+    request: GetProtocolBalanceRequest,
+  ): Promise<GetProtocolBalanceResponse> | Observable<GetProtocolBalanceResponse> | GetProtocolBalanceResponse;
 }
 
 export function StrategyServiceControllerMethods() {
@@ -74,6 +81,7 @@ export function StrategyServiceControllerMethods() {
       "startStrategy",
       "withdrawStrategy",
       "getApy",
+      "getProtocolBalance",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

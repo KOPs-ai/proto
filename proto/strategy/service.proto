@@ -4,6 +4,7 @@ package strategy;
 import "strategy/models/strategy.proto";
 import "strategy/models/permission.proto";
 import "strategy/models/apy.proto";
+import "strategy/models/balance.proto";
 
 option go_package = "pb/go/strategy;strategy";
 
@@ -21,4 +22,7 @@ service StrategyService {
       returns (WithdrawStrategyResponse) {};
 
   rpc GetAPY(GetAPYRequest) returns (GetAPYResponse) {};
+
+  rpc GetProtocolBalance(GetProtocolBalanceRequest)
+      returns (GetProtocolBalanceResponse) {};
 }
