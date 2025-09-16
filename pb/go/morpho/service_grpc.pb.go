@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	protocol "pb/go/protocol"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -21,12 +22,13 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	MorphoService_SupplyERC20_FullMethodName        = "/morpho.MorphoService/SupplyERC20"
 	MorphoService_WithdrawERC20_FullMethodName      = "/morpho.MorphoService/WithdrawERC20"
+	MorphoService_GetLiquidity_FullMethodName       = "/morpho.MorphoService/GetLiquidity"
+	MorphoService_GetLendingPool_FullMethodName     = "/morpho.MorphoService/GetLendingPool"
 	MorphoService_GetAPR_FullMethodName             = "/morpho.MorphoService/GetAPR"
 	MorphoService_GetAPY_FullMethodName             = "/morpho.MorphoService/GetAPY"
 	MorphoService_GetTVL_FullMethodName             = "/morpho.MorphoService/GetTVL"
-	MorphoService_GetLiquidity_FullMethodName       = "/morpho.MorphoService/GetLiquidity"
 	MorphoService_GetSuppliedBalance_FullMethodName = "/morpho.MorphoService/GetSuppliedBalance"
-	MorphoService_GetLendingPool_FullMethodName     = "/morpho.MorphoService/GetLendingPool"
+	MorphoService_GetBorrowedBalance_FullMethodName = "/morpho.MorphoService/GetBorrowedBalance"
 )
 
 // MorphoServiceClient is the client API for MorphoService service.
@@ -35,12 +37,13 @@ const (
 type MorphoServiceClient interface {
 	SupplyERC20(ctx context.Context, in *SupplyERC20Request, opts ...grpc.CallOption) (*SupplyERC20Response, error)
 	WithdrawERC20(ctx context.Context, in *WithdrawERC20Request, opts ...grpc.CallOption) (*WithdrawERC20Response, error)
-	GetAPR(ctx context.Context, in *GetAPRRequest, opts ...grpc.CallOption) (*GetAPRResponse, error)
-	GetAPY(ctx context.Context, in *GetAPYRequest, opts ...grpc.CallOption) (*GetAPYResponse, error)
-	GetTVL(ctx context.Context, in *GetTVLRequest, opts ...grpc.CallOption) (*GetTVLResponse, error)
 	GetLiquidity(ctx context.Context, in *GetLiquidityRequest, opts ...grpc.CallOption) (*GetLiquidityResponse, error)
-	GetSuppliedBalance(ctx context.Context, in *SuppliedBalanceRequest, opts ...grpc.CallOption) (*SuppliedBalanceResponse, error)
 	GetLendingPool(ctx context.Context, in *GetLendingPoolRequest, opts ...grpc.CallOption) (*GetLendingPoolResponse, error)
+	GetAPR(ctx context.Context, in *protocol.GetAPRRequest, opts ...grpc.CallOption) (*protocol.GetAPRResponse, error)
+	GetAPY(ctx context.Context, in *protocol.GetAPYRequest, opts ...grpc.CallOption) (*protocol.GetAPYResponse, error)
+	GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error)
+	GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error)
+	GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error)
 }
 
 type morphoServiceClient struct {
@@ -69,45 +72,9 @@ func (c *morphoServiceClient) WithdrawERC20(ctx context.Context, in *WithdrawERC
 	return out, nil
 }
 
-func (c *morphoServiceClient) GetAPR(ctx context.Context, in *GetAPRRequest, opts ...grpc.CallOption) (*GetAPRResponse, error) {
-	out := new(GetAPRResponse)
-	err := c.cc.Invoke(ctx, MorphoService_GetAPR_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *morphoServiceClient) GetAPY(ctx context.Context, in *GetAPYRequest, opts ...grpc.CallOption) (*GetAPYResponse, error) {
-	out := new(GetAPYResponse)
-	err := c.cc.Invoke(ctx, MorphoService_GetAPY_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *morphoServiceClient) GetTVL(ctx context.Context, in *GetTVLRequest, opts ...grpc.CallOption) (*GetTVLResponse, error) {
-	out := new(GetTVLResponse)
-	err := c.cc.Invoke(ctx, MorphoService_GetTVL_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *morphoServiceClient) GetLiquidity(ctx context.Context, in *GetLiquidityRequest, opts ...grpc.CallOption) (*GetLiquidityResponse, error) {
 	out := new(GetLiquidityResponse)
 	err := c.cc.Invoke(ctx, MorphoService_GetLiquidity_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *morphoServiceClient) GetSuppliedBalance(ctx context.Context, in *SuppliedBalanceRequest, opts ...grpc.CallOption) (*SuppliedBalanceResponse, error) {
-	out := new(SuppliedBalanceResponse)
-	err := c.cc.Invoke(ctx, MorphoService_GetSuppliedBalance_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -123,18 +90,64 @@ func (c *morphoServiceClient) GetLendingPool(ctx context.Context, in *GetLending
 	return out, nil
 }
 
+func (c *morphoServiceClient) GetAPR(ctx context.Context, in *protocol.GetAPRRequest, opts ...grpc.CallOption) (*protocol.GetAPRResponse, error) {
+	out := new(protocol.GetAPRResponse)
+	err := c.cc.Invoke(ctx, MorphoService_GetAPR_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *morphoServiceClient) GetAPY(ctx context.Context, in *protocol.GetAPYRequest, opts ...grpc.CallOption) (*protocol.GetAPYResponse, error) {
+	out := new(protocol.GetAPYResponse)
+	err := c.cc.Invoke(ctx, MorphoService_GetAPY_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *morphoServiceClient) GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error) {
+	out := new(protocol.GetTVLResponse)
+	err := c.cc.Invoke(ctx, MorphoService_GetTVL_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *morphoServiceClient) GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error) {
+	out := new(protocol.SuppliedBalanceResponse)
+	err := c.cc.Invoke(ctx, MorphoService_GetSuppliedBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *morphoServiceClient) GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error) {
+	out := new(protocol.BorrowedBalanceResponse)
+	err := c.cc.Invoke(ctx, MorphoService_GetBorrowedBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MorphoServiceServer is the server API for MorphoService service.
 // All implementations should embed UnimplementedMorphoServiceServer
 // for forward compatibility
 type MorphoServiceServer interface {
 	SupplyERC20(context.Context, *SupplyERC20Request) (*SupplyERC20Response, error)
 	WithdrawERC20(context.Context, *WithdrawERC20Request) (*WithdrawERC20Response, error)
-	GetAPR(context.Context, *GetAPRRequest) (*GetAPRResponse, error)
-	GetAPY(context.Context, *GetAPYRequest) (*GetAPYResponse, error)
-	GetTVL(context.Context, *GetTVLRequest) (*GetTVLResponse, error)
 	GetLiquidity(context.Context, *GetLiquidityRequest) (*GetLiquidityResponse, error)
-	GetSuppliedBalance(context.Context, *SuppliedBalanceRequest) (*SuppliedBalanceResponse, error)
 	GetLendingPool(context.Context, *GetLendingPoolRequest) (*GetLendingPoolResponse, error)
+	GetAPR(context.Context, *protocol.GetAPRRequest) (*protocol.GetAPRResponse, error)
+	GetAPY(context.Context, *protocol.GetAPYRequest) (*protocol.GetAPYResponse, error)
+	GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error)
+	GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error)
+	GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error)
 }
 
 // UnimplementedMorphoServiceServer should be embedded to have forward compatible implementations.
@@ -147,23 +160,26 @@ func (UnimplementedMorphoServiceServer) SupplyERC20(context.Context, *SupplyERC2
 func (UnimplementedMorphoServiceServer) WithdrawERC20(context.Context, *WithdrawERC20Request) (*WithdrawERC20Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WithdrawERC20 not implemented")
 }
-func (UnimplementedMorphoServiceServer) GetAPR(context.Context, *GetAPRRequest) (*GetAPRResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAPR not implemented")
-}
-func (UnimplementedMorphoServiceServer) GetAPY(context.Context, *GetAPYRequest) (*GetAPYResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAPY not implemented")
-}
-func (UnimplementedMorphoServiceServer) GetTVL(context.Context, *GetTVLRequest) (*GetTVLResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTVL not implemented")
-}
 func (UnimplementedMorphoServiceServer) GetLiquidity(context.Context, *GetLiquidityRequest) (*GetLiquidityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLiquidity not implemented")
 }
-func (UnimplementedMorphoServiceServer) GetSuppliedBalance(context.Context, *SuppliedBalanceRequest) (*SuppliedBalanceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetSuppliedBalance not implemented")
-}
 func (UnimplementedMorphoServiceServer) GetLendingPool(context.Context, *GetLendingPoolRequest) (*GetLendingPoolResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLendingPool not implemented")
+}
+func (UnimplementedMorphoServiceServer) GetAPR(context.Context, *protocol.GetAPRRequest) (*protocol.GetAPRResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAPR not implemented")
+}
+func (UnimplementedMorphoServiceServer) GetAPY(context.Context, *protocol.GetAPYRequest) (*protocol.GetAPYResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAPY not implemented")
+}
+func (UnimplementedMorphoServiceServer) GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTVL not implemented")
+}
+func (UnimplementedMorphoServiceServer) GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSuppliedBalance not implemented")
+}
+func (UnimplementedMorphoServiceServer) GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBorrowedBalance not implemented")
 }
 
 // UnsafeMorphoServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -213,60 +229,6 @@ func _MorphoService_WithdrawERC20_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _MorphoService_GetAPR_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAPRRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MorphoServiceServer).GetAPR(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: MorphoService_GetAPR_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MorphoServiceServer).GetAPR(ctx, req.(*GetAPRRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MorphoService_GetAPY_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAPYRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MorphoServiceServer).GetAPY(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: MorphoService_GetAPY_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MorphoServiceServer).GetAPY(ctx, req.(*GetAPYRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MorphoService_GetTVL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTVLRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MorphoServiceServer).GetTVL(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: MorphoService_GetTVL_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MorphoServiceServer).GetTVL(ctx, req.(*GetTVLRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _MorphoService_GetLiquidity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetLiquidityRequest)
 	if err := dec(in); err != nil {
@@ -281,24 +243,6 @@ func _MorphoService_GetLiquidity_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MorphoServiceServer).GetLiquidity(ctx, req.(*GetLiquidityRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _MorphoService_GetSuppliedBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SuppliedBalanceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MorphoServiceServer).GetSuppliedBalance(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: MorphoService_GetSuppliedBalance_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MorphoServiceServer).GetSuppliedBalance(ctx, req.(*SuppliedBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -321,6 +265,96 @@ func _MorphoService_GetLendingPool_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MorphoService_GetAPR_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetAPRRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MorphoServiceServer).GetAPR(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MorphoService_GetAPR_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MorphoServiceServer).GetAPR(ctx, req.(*protocol.GetAPRRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MorphoService_GetAPY_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetAPYRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MorphoServiceServer).GetAPY(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MorphoService_GetAPY_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MorphoServiceServer).GetAPY(ctx, req.(*protocol.GetAPYRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MorphoService_GetTVL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetTVLRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MorphoServiceServer).GetTVL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MorphoService_GetTVL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MorphoServiceServer).GetTVL(ctx, req.(*protocol.GetTVLRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MorphoService_GetSuppliedBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.SuppliedBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MorphoServiceServer).GetSuppliedBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MorphoService_GetSuppliedBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MorphoServiceServer).GetSuppliedBalance(ctx, req.(*protocol.SuppliedBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MorphoService_GetBorrowedBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.BorrowedBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MorphoServiceServer).GetBorrowedBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MorphoService_GetBorrowedBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MorphoServiceServer).GetBorrowedBalance(ctx, req.(*protocol.BorrowedBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MorphoService_ServiceDesc is the grpc.ServiceDesc for MorphoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -337,6 +371,14 @@ var MorphoService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MorphoService_WithdrawERC20_Handler,
 		},
 		{
+			MethodName: "GetLiquidity",
+			Handler:    _MorphoService_GetLiquidity_Handler,
+		},
+		{
+			MethodName: "GetLendingPool",
+			Handler:    _MorphoService_GetLendingPool_Handler,
+		},
+		{
 			MethodName: "GetAPR",
 			Handler:    _MorphoService_GetAPR_Handler,
 		},
@@ -349,16 +391,12 @@ var MorphoService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MorphoService_GetTVL_Handler,
 		},
 		{
-			MethodName: "GetLiquidity",
-			Handler:    _MorphoService_GetLiquidity_Handler,
-		},
-		{
 			MethodName: "GetSuppliedBalance",
 			Handler:    _MorphoService_GetSuppliedBalance_Handler,
 		},
 		{
-			MethodName: "GetLendingPool",
-			Handler:    _MorphoService_GetLendingPool_Handler,
+			MethodName: "GetBorrowedBalance",
+			Handler:    _MorphoService_GetBorrowedBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

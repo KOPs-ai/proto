@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v6.30.0--rc1
-// source: morpho/models/getTVL.proto
+// source: protocol/models/getTVL.proto
 
-package morpho
+package protocol
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -33,7 +33,7 @@ type GetTVLRequest struct {
 func (x *GetTVLRequest) Reset() {
 	*x = GetTVLRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_morpho_models_getTVL_proto_msgTypes[0]
+		mi := &file_protocol_models_getTVL_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -46,7 +46,7 @@ func (x *GetTVLRequest) String() string {
 func (*GetTVLRequest) ProtoMessage() {}
 
 func (x *GetTVLRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_morpho_models_getTVL_proto_msgTypes[0]
+	mi := &file_protocol_models_getTVL_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +59,7 @@ func (x *GetTVLRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTVLRequest.ProtoReflect.Descriptor instead.
 func (*GetTVLRequest) Descriptor() ([]byte, []int) {
-	return file_morpho_models_getTVL_proto_rawDescGZIP(), []int{0}
+	return file_protocol_models_getTVL_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetTVLRequest) GetTokenAddress() string {
@@ -94,7 +94,7 @@ type GetTVLResponse struct {
 func (x *GetTVLResponse) Reset() {
 	*x = GetTVLResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_morpho_models_getTVL_proto_msgTypes[1]
+		mi := &file_protocol_models_getTVL_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -107,7 +107,7 @@ func (x *GetTVLResponse) String() string {
 func (*GetTVLResponse) ProtoMessage() {}
 
 func (x *GetTVLResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_morpho_models_getTVL_proto_msgTypes[1]
+	mi := &file_protocol_models_getTVL_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -120,7 +120,7 @@ func (x *GetTVLResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTVLResponse.ProtoReflect.Descriptor instead.
 func (*GetTVLResponse) Descriptor() ([]byte, []int) {
-	return file_morpho_models_getTVL_proto_rawDescGZIP(), []int{1}
+	return file_protocol_models_getTVL_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetTVLResponse) GetTVL() float64 {
@@ -130,43 +130,43 @@ func (x *GetTVLResponse) GetTVL() float64 {
 	return 0
 }
 
-var File_morpho_models_getTVL_proto protoreflect.FileDescriptor
+var File_protocol_models_getTVL_proto protoreflect.FileDescriptor
 
-var file_morpho_models_getTVL_proto_rawDesc = []byte{
-	0x0a, 0x1a, 0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f,
-	0x67, 0x65, 0x74, 0x54, 0x56, 0x4c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x06, 0x6d, 0x6f,
-	0x72, 0x70, 0x68, 0x6f, 0x22, 0x6f, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x54, 0x56, 0x4c, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x6f, 0x6f,
-	0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x70, 0x6f, 0x6f, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x63,
-	0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x68,
-	0x61, 0x69, 0x6e, 0x49, 0x64, 0x22, 0x22, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x54, 0x56, 0x4c, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x54, 0x56, 0x4c, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x01, 0x52, 0x03, 0x54, 0x56, 0x4c, 0x42, 0x15, 0x5a, 0x13, 0x70, 0x62, 0x2f,
-	0x67, 0x6f, 0x2f, 0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f, 0x3b, 0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f,
-	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+var file_protocol_models_getTVL_proto_rawDesc = []byte{
+	0x0a, 0x1c, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x73, 0x2f, 0x67, 0x65, 0x74, 0x54, 0x56, 0x4c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x22, 0x6f, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x54,
+	0x56, 0x4c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f, 0x6b,
+	0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0c, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x20, 0x0a,
+	0x0b, 0x70, 0x6f, 0x6f, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x70, 0x6f, 0x6f, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12,
+	0x18, 0x0a, 0x07, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x07, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x22, 0x22, 0x0a, 0x0e, 0x47, 0x65, 0x74,
+	0x54, 0x56, 0x4c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x54,
+	0x56, 0x4c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x01, 0x52, 0x03, 0x54, 0x56, 0x4c, 0x42, 0x19, 0x5a,
+	0x17, 0x70, 0x62, 0x2f, 0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x3b,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_morpho_models_getTVL_proto_rawDescOnce sync.Once
-	file_morpho_models_getTVL_proto_rawDescData = file_morpho_models_getTVL_proto_rawDesc
+	file_protocol_models_getTVL_proto_rawDescOnce sync.Once
+	file_protocol_models_getTVL_proto_rawDescData = file_protocol_models_getTVL_proto_rawDesc
 )
 
-func file_morpho_models_getTVL_proto_rawDescGZIP() []byte {
-	file_morpho_models_getTVL_proto_rawDescOnce.Do(func() {
-		file_morpho_models_getTVL_proto_rawDescData = protoimpl.X.CompressGZIP(file_morpho_models_getTVL_proto_rawDescData)
+func file_protocol_models_getTVL_proto_rawDescGZIP() []byte {
+	file_protocol_models_getTVL_proto_rawDescOnce.Do(func() {
+		file_protocol_models_getTVL_proto_rawDescData = protoimpl.X.CompressGZIP(file_protocol_models_getTVL_proto_rawDescData)
 	})
-	return file_morpho_models_getTVL_proto_rawDescData
+	return file_protocol_models_getTVL_proto_rawDescData
 }
 
-var file_morpho_models_getTVL_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_morpho_models_getTVL_proto_goTypes = []interface{}{
-	(*GetTVLRequest)(nil),  // 0: morpho.GetTVLRequest
-	(*GetTVLResponse)(nil), // 1: morpho.GetTVLResponse
+var file_protocol_models_getTVL_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_protocol_models_getTVL_proto_goTypes = []interface{}{
+	(*GetTVLRequest)(nil),  // 0: protocol.GetTVLRequest
+	(*GetTVLResponse)(nil), // 1: protocol.GetTVLResponse
 }
-var file_morpho_models_getTVL_proto_depIdxs = []int32{
+var file_protocol_models_getTVL_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -174,13 +174,13 @@ var file_morpho_models_getTVL_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_morpho_models_getTVL_proto_init() }
-func file_morpho_models_getTVL_proto_init() {
-	if File_morpho_models_getTVL_proto != nil {
+func init() { file_protocol_models_getTVL_proto_init() }
+func file_protocol_models_getTVL_proto_init() {
+	if File_protocol_models_getTVL_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_morpho_models_getTVL_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_protocol_models_getTVL_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetTVLRequest); i {
 			case 0:
 				return &v.state
@@ -192,7 +192,7 @@ func file_morpho_models_getTVL_proto_init() {
 				return nil
 			}
 		}
-		file_morpho_models_getTVL_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_protocol_models_getTVL_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetTVLResponse); i {
 			case 0:
 				return &v.state
@@ -209,18 +209,18 @@ func file_morpho_models_getTVL_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_morpho_models_getTVL_proto_rawDesc,
+			RawDescriptor: file_protocol_models_getTVL_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_morpho_models_getTVL_proto_goTypes,
-		DependencyIndexes: file_morpho_models_getTVL_proto_depIdxs,
-		MessageInfos:      file_morpho_models_getTVL_proto_msgTypes,
+		GoTypes:           file_protocol_models_getTVL_proto_goTypes,
+		DependencyIndexes: file_protocol_models_getTVL_proto_depIdxs,
+		MessageInfos:      file_protocol_models_getTVL_proto_msgTypes,
 	}.Build()
-	File_morpho_models_getTVL_proto = out.File
-	file_morpho_models_getTVL_proto_rawDesc = nil
-	file_morpho_models_getTVL_proto_goTypes = nil
-	file_morpho_models_getTVL_proto_depIdxs = nil
+	File_protocol_models_getTVL_proto = out.File
+	file_protocol_models_getTVL_proto_rawDesc = nil
+	file_protocol_models_getTVL_proto_goTypes = nil
+	file_protocol_models_getTVL_proto_depIdxs = nil
 }

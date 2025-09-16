@@ -3,21 +3,28 @@ syntax = "proto3";
 package morpho;
 import "morpho/models/supplyERC20.proto";
 import "morpho/models/withdrawERC20.proto";
-import "morpho/models/getAPR.proto";
-import "morpho/models/getAPY.proto";
-import "morpho/models/getTVL.proto";
 import "morpho/models/getLiquidity.proto";
 import "morpho/models/getLendingPool.proto";
+
+import "protocol/models/supplyERC20.proto";
+import "protocol/models/withdrawERC20.proto";
+import "protocol/models/getAPR.proto";
+import "protocol/models/getAPY.proto";
+import "protocol/models/getTVL.proto";
 
 option go_package = "pb/go/morpho;morpho";
 
 service MorphoService {
   rpc SupplyERC20(SupplyERC20Request) returns (SupplyERC20Response) {};
   rpc WithdrawERC20(WithdrawERC20Request) returns (WithdrawERC20Response) {};
-  rpc GetAPR(GetAPRRequest) returns (GetAPRResponse) {};
-  rpc GetAPY(GetAPYRequest) returns (GetAPYResponse) {};
-  rpc GetTVL(GetTVLRequest) returns (GetTVLResponse) {};
   rpc GetLiquidity(GetLiquidityRequest) returns (GetLiquidityResponse) {};
-  rpc GetSuppliedBalance(SuppliedBalanceRequest)returns (SuppliedBalanceResponse) {};
   rpc GetLendingPool(GetLendingPoolRequest) returns (GetLendingPoolResponse) {};
+  
+  rpc GetAPR(protocol.GetAPRRequest) returns (protocol.GetAPRResponse) {};
+  rpc GetAPY(protocol.GetAPYRequest) returns (protocol.GetAPYResponse) {};
+  rpc GetTVL(protocol.GetTVLRequest) returns (protocol.GetTVLResponse) {};
+  rpc GetSuppliedBalance(protocol.SuppliedBalanceRequest)
+      returns (protocol.SuppliedBalanceResponse) {};
+  rpc GetBorrowedBalance(protocol.BorrowedBalanceRequest)
+      returns (protocol.BorrowedBalanceResponse) {};
 }

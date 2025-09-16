@@ -178,140 +178,6 @@ func (x *SupplyERC20Response) GetAmount() string {
 	return ""
 }
 
-type SuppliedBalanceRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	UserAddress  string `protobuf:"bytes,1,opt,name=userAddress,proto3" json:"userAddress,omitempty"`
-	TokenAddress string `protobuf:"bytes,2,opt,name=tokenAddress,proto3" json:"tokenAddress,omitempty"` // supplied token address
-	ChainID      int64  `protobuf:"varint,3,opt,name=ChainID,proto3" json:"ChainID,omitempty"`
-	PoolAddress  string `protobuf:"bytes,4,opt,name=poolAddress,proto3" json:"poolAddress,omitempty"`
-}
-
-func (x *SuppliedBalanceRequest) Reset() {
-	*x = SuppliedBalanceRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_morpho_models_supplyERC20_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SuppliedBalanceRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SuppliedBalanceRequest) ProtoMessage() {}
-
-func (x *SuppliedBalanceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_morpho_models_supplyERC20_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SuppliedBalanceRequest.ProtoReflect.Descriptor instead.
-func (*SuppliedBalanceRequest) Descriptor() ([]byte, []int) {
-	return file_morpho_models_supplyERC20_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *SuppliedBalanceRequest) GetUserAddress() string {
-	if x != nil {
-		return x.UserAddress
-	}
-	return ""
-}
-
-func (x *SuppliedBalanceRequest) GetTokenAddress() string {
-	if x != nil {
-		return x.TokenAddress
-	}
-	return ""
-}
-
-func (x *SuppliedBalanceRequest) GetChainID() int64 {
-	if x != nil {
-		return x.ChainID
-	}
-	return 0
-}
-
-func (x *SuppliedBalanceRequest) GetPoolAddress() string {
-	if x != nil {
-		return x.PoolAddress
-	}
-	return ""
-}
-
-type SuppliedBalanceResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	TokenAddress string `protobuf:"bytes,1,opt,name=tokenAddress,proto3" json:"tokenAddress,omitempty"`
-	Balance      string `protobuf:"bytes,2,opt,name=balance,proto3" json:"balance,omitempty"`
-	Decimals     string `protobuf:"bytes,3,opt,name=decimals,proto3" json:"decimals,omitempty"`
-}
-
-func (x *SuppliedBalanceResponse) Reset() {
-	*x = SuppliedBalanceResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_morpho_models_supplyERC20_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SuppliedBalanceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SuppliedBalanceResponse) ProtoMessage() {}
-
-func (x *SuppliedBalanceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_morpho_models_supplyERC20_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SuppliedBalanceResponse.ProtoReflect.Descriptor instead.
-func (*SuppliedBalanceResponse) Descriptor() ([]byte, []int) {
-	return file_morpho_models_supplyERC20_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *SuppliedBalanceResponse) GetTokenAddress() string {
-	if x != nil {
-		return x.TokenAddress
-	}
-	return ""
-}
-
-func (x *SuppliedBalanceResponse) GetBalance() string {
-	if x != nil {
-		return x.Balance
-	}
-	return ""
-}
-
-func (x *SuppliedBalanceResponse) GetDecimals() string {
-	if x != nil {
-		return x.Decimals
-	}
-	return ""
-}
-
 var File_morpho_models_supplyERC20_proto protoreflect.FileDescriptor
 
 var file_morpho_models_supplyERC20_proto_rawDesc = []byte{
@@ -339,26 +205,9 @@ var file_morpho_models_supplyERC20_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x16, 0x0a,
 	0x06, 0x74, 0x78, 0x48, 0x61, 0x73, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74,
 	0x78, 0x48, 0x61, 0x73, 0x68, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x9a, 0x01,
-	0x0a, 0x16, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x69, 0x65, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x75, 0x73, 0x65, 0x72,
-	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75,
-	0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f,
-	0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0c, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x18,
-	0x0a, 0x07, 0x43, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x44, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x07, 0x43, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x44, 0x12, 0x20, 0x0a, 0x0b, 0x70, 0x6f, 0x6f, 0x6c,
-	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70,
-	0x6f, 0x6f, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x73, 0x0a, 0x17, 0x53, 0x75,
-	0x70, 0x70, 0x6c, 0x69, 0x65, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64,
-	0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x74, 0x6f, 0x6b,
-	0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x62, 0x61, 0x6c,
-	0x61, 0x6e, 0x63, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x62, 0x61, 0x6c, 0x61,
-	0x6e, 0x63, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x64, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x42,
-	0x15, 0x5a, 0x13, 0x70, 0x62, 0x2f, 0x67, 0x6f, 0x2f, 0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f, 0x3b,
-	0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x61, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x15, 0x5a,
+	0x13, 0x70, 0x62, 0x2f, 0x67, 0x6f, 0x2f, 0x6d, 0x6f, 0x72, 0x70, 0x68, 0x6f, 0x3b, 0x6d, 0x6f,
+	0x72, 0x70, 0x68, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -373,12 +222,10 @@ func file_morpho_models_supplyERC20_proto_rawDescGZIP() []byte {
 	return file_morpho_models_supplyERC20_proto_rawDescData
 }
 
-var file_morpho_models_supplyERC20_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_morpho_models_supplyERC20_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_morpho_models_supplyERC20_proto_goTypes = []interface{}{
-	(*SupplyERC20Request)(nil),      // 0: morpho.SupplyERC20Request
-	(*SupplyERC20Response)(nil),     // 1: morpho.SupplyERC20Response
-	(*SuppliedBalanceRequest)(nil),  // 2: morpho.SuppliedBalanceRequest
-	(*SuppliedBalanceResponse)(nil), // 3: morpho.SuppliedBalanceResponse
+	(*SupplyERC20Request)(nil),  // 0: morpho.SupplyERC20Request
+	(*SupplyERC20Response)(nil), // 1: morpho.SupplyERC20Response
 }
 var file_morpho_models_supplyERC20_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -418,30 +265,6 @@ func file_morpho_models_supplyERC20_proto_init() {
 				return nil
 			}
 		}
-		file_morpho_models_supplyERC20_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SuppliedBalanceRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_morpho_models_supplyERC20_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SuppliedBalanceResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -449,7 +272,7 @@ func file_morpho_models_supplyERC20_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_morpho_models_supplyERC20_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
