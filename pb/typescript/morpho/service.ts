@@ -7,17 +7,14 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { GetAPRRequest, GetAPRResponse } from "./models/getAPR";
-import { GetAPYRequest, GetAPYResponse } from "./models/getAPY";
+import { GetAPRRequest, GetAPRResponse } from "../protocol/models/getAPR";
+import { GetAPYRequest, GetAPYResponse } from "../protocol/models/getAPY";
+import { GetTVLRequest, GetTVLResponse } from "../protocol/models/getTVL";
+import { SuppliedBalanceRequest, SuppliedBalanceResponse } from "../protocol/models/supplyERC20";
+import { BorrowedBalanceRequest, BorrowedBalanceResponse } from "../protocol/models/withdrawERC20";
 import { GetLendingPoolRequest, GetLendingPoolResponse } from "./models/getLendingPool";
 import { GetLiquidityRequest, GetLiquidityResponse } from "./models/getLiquidity";
-import { GetTVLRequest, GetTVLResponse } from "./models/getTVL";
-import {
-  SuppliedBalanceRequest,
-  SuppliedBalanceResponse,
-  SupplyERC20Request,
-  SupplyERC20Response,
-} from "./models/supplyERC20";
+import { SupplyERC20Request, SupplyERC20Response } from "./models/supplyERC20";
 import { WithdrawERC20Request, WithdrawERC20Response } from "./models/withdrawERC20";
 
 export const protobufPackage = "morpho";
@@ -29,17 +26,19 @@ export interface MorphoServiceClient {
 
   withdrawErc20(request: WithdrawERC20Request): Observable<WithdrawERC20Response>;
 
+  getLiquidity(request: GetLiquidityRequest): Observable<GetLiquidityResponse>;
+
+  getLendingPool(request: GetLendingPoolRequest): Observable<GetLendingPoolResponse>;
+
   getApr(request: GetAPRRequest): Observable<GetAPRResponse>;
 
   getApy(request: GetAPYRequest): Observable<GetAPYResponse>;
 
   getTvl(request: GetTVLRequest): Observable<GetTVLResponse>;
 
-  getLiquidity(request: GetLiquidityRequest): Observable<GetLiquidityResponse>;
-
   getSuppliedBalance(request: SuppliedBalanceRequest): Observable<SuppliedBalanceResponse>;
 
-  getLendingPool(request: GetLendingPoolRequest): Observable<GetLendingPoolResponse>;
+  getBorrowedBalance(request: BorrowedBalanceRequest): Observable<BorrowedBalanceResponse>;
 }
 
 export interface MorphoServiceController {
@@ -51,23 +50,27 @@ export interface MorphoServiceController {
     request: WithdrawERC20Request,
   ): Promise<WithdrawERC20Response> | Observable<WithdrawERC20Response> | WithdrawERC20Response;
 
+  getLiquidity(
+    request: GetLiquidityRequest,
+  ): Promise<GetLiquidityResponse> | Observable<GetLiquidityResponse> | GetLiquidityResponse;
+
+  getLendingPool(
+    request: GetLendingPoolRequest,
+  ): Promise<GetLendingPoolResponse> | Observable<GetLendingPoolResponse> | GetLendingPoolResponse;
+
   getApr(request: GetAPRRequest): Promise<GetAPRResponse> | Observable<GetAPRResponse> | GetAPRResponse;
 
   getApy(request: GetAPYRequest): Promise<GetAPYResponse> | Observable<GetAPYResponse> | GetAPYResponse;
 
   getTvl(request: GetTVLRequest): Promise<GetTVLResponse> | Observable<GetTVLResponse> | GetTVLResponse;
 
-  getLiquidity(
-    request: GetLiquidityRequest,
-  ): Promise<GetLiquidityResponse> | Observable<GetLiquidityResponse> | GetLiquidityResponse;
-
   getSuppliedBalance(
     request: SuppliedBalanceRequest,
   ): Promise<SuppliedBalanceResponse> | Observable<SuppliedBalanceResponse> | SuppliedBalanceResponse;
 
-  getLendingPool(
-    request: GetLendingPoolRequest,
-  ): Promise<GetLendingPoolResponse> | Observable<GetLendingPoolResponse> | GetLendingPoolResponse;
+  getBorrowedBalance(
+    request: BorrowedBalanceRequest,
+  ): Promise<BorrowedBalanceResponse> | Observable<BorrowedBalanceResponse> | BorrowedBalanceResponse;
 }
 
 export function MorphoServiceControllerMethods() {
@@ -75,12 +78,13 @@ export function MorphoServiceControllerMethods() {
     const grpcMethods: string[] = [
       "supplyErc20",
       "withdrawErc20",
+      "getLiquidity",
+      "getLendingPool",
       "getApr",
       "getApy",
       "getTvl",
-      "getLiquidity",
       "getSuppliedBalance",
-      "getLendingPool",
+      "getBorrowedBalance",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

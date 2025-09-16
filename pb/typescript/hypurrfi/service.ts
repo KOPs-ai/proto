@@ -7,14 +7,13 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { GetAPRRequest, GetAPRResponse } from "./models/getAPR";
+import { GetAPRRequest, GetAPRResponse } from "../protocol/models/getAPR";
+import { GetAPYRequest, GetAPYResponse } from "../protocol/models/getAPY";
+import { GetTVLRequest, GetTVLResponse } from "../protocol/models/getTVL";
+import { SuppliedBalanceRequest, SuppliedBalanceResponse } from "../protocol/models/supplyERC20";
+import { BorrowedBalanceRequest, BorrowedBalanceResponse } from "../protocol/models/withdrawERC20";
 import { GetLendingPoolRequest, GetLendingPoolResponse } from "./models/getLendingPool";
-import {
-  SuppliedBalanceRequest,
-  SuppliedBalanceResponse,
-  SupplyERC20Request,
-  SupplyERC20Response,
-} from "./models/supplyERC20";
+import { SupplyERC20Request, SupplyERC20Response } from "./models/supplyERC20";
 import { WithdrawERC20Request, WithdrawERC20Response } from "./models/withdrawERC20";
 
 export const protobufPackage = "hypurrfi";
@@ -26,11 +25,17 @@ export interface HypurrfiServiceClient {
 
   withdrawErc20(request: WithdrawERC20Request): Observable<WithdrawERC20Response>;
 
-  getApr(request: GetAPRRequest): Observable<GetAPRResponse>;
-
   getLendingPool(request: GetLendingPoolRequest): Observable<GetLendingPoolResponse>;
 
+  getApr(request: GetAPRRequest): Observable<GetAPRResponse>;
+
+  getApy(request: GetAPYRequest): Observable<GetAPYResponse>;
+
+  getTvl(request: GetTVLRequest): Observable<GetTVLResponse>;
+
   getSuppliedBalance(request: SuppliedBalanceRequest): Observable<SuppliedBalanceResponse>;
+
+  getBorrowedBalance(request: BorrowedBalanceRequest): Observable<BorrowedBalanceResponse>;
 }
 
 export interface HypurrfiServiceController {
@@ -42,20 +47,37 @@ export interface HypurrfiServiceController {
     request: WithdrawERC20Request,
   ): Promise<WithdrawERC20Response> | Observable<WithdrawERC20Response> | WithdrawERC20Response;
 
-  getApr(request: GetAPRRequest): Promise<GetAPRResponse> | Observable<GetAPRResponse> | GetAPRResponse;
-
   getLendingPool(
     request: GetLendingPoolRequest,
   ): Promise<GetLendingPoolResponse> | Observable<GetLendingPoolResponse> | GetLendingPoolResponse;
 
+  getApr(request: GetAPRRequest): Promise<GetAPRResponse> | Observable<GetAPRResponse> | GetAPRResponse;
+
+  getApy(request: GetAPYRequest): Promise<GetAPYResponse> | Observable<GetAPYResponse> | GetAPYResponse;
+
+  getTvl(request: GetTVLRequest): Promise<GetTVLResponse> | Observable<GetTVLResponse> | GetTVLResponse;
+
   getSuppliedBalance(
     request: SuppliedBalanceRequest,
   ): Promise<SuppliedBalanceResponse> | Observable<SuppliedBalanceResponse> | SuppliedBalanceResponse;
+
+  getBorrowedBalance(
+    request: BorrowedBalanceRequest,
+  ): Promise<BorrowedBalanceResponse> | Observable<BorrowedBalanceResponse> | BorrowedBalanceResponse;
 }
 
 export function HypurrfiServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["supplyErc20", "withdrawErc20", "getApr", "getLendingPool", "getSuppliedBalance"];
+    const grpcMethods: string[] = [
+      "supplyErc20",
+      "withdrawErc20",
+      "getLendingPool",
+      "getApr",
+      "getApy",
+      "getTvl",
+      "getSuppliedBalance",
+      "getBorrowedBalance",
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("HypurrfiService", method)(constructor.prototype[method], method, descriptor);
