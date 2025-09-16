@@ -7,10 +7,11 @@
 package morpho
 
 import (
+	reflect "reflect"
+
+	protocol "github.com/KOPs-ai/proto/pb/go/protocol"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	protocol "pb/go/protocol"
-	reflect "reflect"
 )
 
 const (

@@ -8,6 +8,8 @@ package hyperlend
 
 import (
 	context "context"
+
+	protocol "github.com/KOPs-ai/proto/pb/go/protocol"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -21,9 +23,12 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	HyperLendService_SupplyERC20_FullMethodName        = "/hyperlend.HyperLendService/SupplyERC20"
 	HyperLendService_WithdrawERC20_FullMethodName      = "/hyperlend.HyperLendService/WithdrawERC20"
-	HyperLendService_GetAPR_FullMethodName             = "/hyperlend.HyperLendService/GetAPR"
 	HyperLendService_GetLendingPool_FullMethodName     = "/hyperlend.HyperLendService/GetLendingPool"
+	HyperLendService_GetAPR_FullMethodName             = "/hyperlend.HyperLendService/GetAPR"
+	HyperLendService_GetAPY_FullMethodName             = "/hyperlend.HyperLendService/GetAPY"
+	HyperLendService_GetTVL_FullMethodName             = "/hyperlend.HyperLendService/GetTVL"
 	HyperLendService_GetSuppliedBalance_FullMethodName = "/hyperlend.HyperLendService/GetSuppliedBalance"
+	HyperLendService_GetBorrowedBalance_FullMethodName = "/hyperlend.HyperLendService/GetBorrowedBalance"
 )
 
 // HyperLendServiceClient is the client API for HyperLendService service.
@@ -32,9 +37,12 @@ const (
 type HyperLendServiceClient interface {
 	SupplyERC20(ctx context.Context, in *SupplyERC20Request, opts ...grpc.CallOption) (*SupplyERC20Response, error)
 	WithdrawERC20(ctx context.Context, in *WithdrawERC20Request, opts ...grpc.CallOption) (*WithdrawERC20Response, error)
-	GetAPR(ctx context.Context, in *GetAPRRequest, opts ...grpc.CallOption) (*GetAPRResponse, error)
 	GetLendingPool(ctx context.Context, in *GetLendingPoolRequest, opts ...grpc.CallOption) (*GetLendingPoolResponse, error)
-	GetSuppliedBalance(ctx context.Context, in *SuppliedBalanceRequest, opts ...grpc.CallOption) (*SuppliedBalanceResponse, error)
+	GetAPR(ctx context.Context, in *protocol.GetAPRRequest, opts ...grpc.CallOption) (*protocol.GetAPRResponse, error)
+	GetAPY(ctx context.Context, in *protocol.GetAPYRequest, opts ...grpc.CallOption) (*protocol.GetAPYResponse, error)
+	GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error)
+	GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error)
+	GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error)
 }
 
 type hyperLendServiceClient struct {
@@ -63,15 +71,6 @@ func (c *hyperLendServiceClient) WithdrawERC20(ctx context.Context, in *Withdraw
 	return out, nil
 }
 
-func (c *hyperLendServiceClient) GetAPR(ctx context.Context, in *GetAPRRequest, opts ...grpc.CallOption) (*GetAPRResponse, error) {
-	out := new(GetAPRResponse)
-	err := c.cc.Invoke(ctx, HyperLendService_GetAPR_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *hyperLendServiceClient) GetLendingPool(ctx context.Context, in *GetLendingPoolRequest, opts ...grpc.CallOption) (*GetLendingPoolResponse, error) {
 	out := new(GetLendingPoolResponse)
 	err := c.cc.Invoke(ctx, HyperLendService_GetLendingPool_FullMethodName, in, out, opts...)
@@ -81,9 +80,45 @@ func (c *hyperLendServiceClient) GetLendingPool(ctx context.Context, in *GetLend
 	return out, nil
 }
 
-func (c *hyperLendServiceClient) GetSuppliedBalance(ctx context.Context, in *SuppliedBalanceRequest, opts ...grpc.CallOption) (*SuppliedBalanceResponse, error) {
-	out := new(SuppliedBalanceResponse)
+func (c *hyperLendServiceClient) GetAPR(ctx context.Context, in *protocol.GetAPRRequest, opts ...grpc.CallOption) (*protocol.GetAPRResponse, error) {
+	out := new(protocol.GetAPRResponse)
+	err := c.cc.Invoke(ctx, HyperLendService_GetAPR_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hyperLendServiceClient) GetAPY(ctx context.Context, in *protocol.GetAPYRequest, opts ...grpc.CallOption) (*protocol.GetAPYResponse, error) {
+	out := new(protocol.GetAPYResponse)
+	err := c.cc.Invoke(ctx, HyperLendService_GetAPY_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hyperLendServiceClient) GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error) {
+	out := new(protocol.GetTVLResponse)
+	err := c.cc.Invoke(ctx, HyperLendService_GetTVL_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hyperLendServiceClient) GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error) {
+	out := new(protocol.SuppliedBalanceResponse)
 	err := c.cc.Invoke(ctx, HyperLendService_GetSuppliedBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *hyperLendServiceClient) GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error) {
+	out := new(protocol.BorrowedBalanceResponse)
+	err := c.cc.Invoke(ctx, HyperLendService_GetBorrowedBalance_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,9 +131,12 @@ func (c *hyperLendServiceClient) GetSuppliedBalance(ctx context.Context, in *Sup
 type HyperLendServiceServer interface {
 	SupplyERC20(context.Context, *SupplyERC20Request) (*SupplyERC20Response, error)
 	WithdrawERC20(context.Context, *WithdrawERC20Request) (*WithdrawERC20Response, error)
-	GetAPR(context.Context, *GetAPRRequest) (*GetAPRResponse, error)
 	GetLendingPool(context.Context, *GetLendingPoolRequest) (*GetLendingPoolResponse, error)
-	GetSuppliedBalance(context.Context, *SuppliedBalanceRequest) (*SuppliedBalanceResponse, error)
+	GetAPR(context.Context, *protocol.GetAPRRequest) (*protocol.GetAPRResponse, error)
+	GetAPY(context.Context, *protocol.GetAPYRequest) (*protocol.GetAPYResponse, error)
+	GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error)
+	GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error)
+	GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error)
 }
 
 // UnimplementedHyperLendServiceServer should be embedded to have forward compatible implementations.
@@ -111,14 +149,23 @@ func (UnimplementedHyperLendServiceServer) SupplyERC20(context.Context, *SupplyE
 func (UnimplementedHyperLendServiceServer) WithdrawERC20(context.Context, *WithdrawERC20Request) (*WithdrawERC20Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WithdrawERC20 not implemented")
 }
-func (UnimplementedHyperLendServiceServer) GetAPR(context.Context, *GetAPRRequest) (*GetAPRResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAPR not implemented")
-}
 func (UnimplementedHyperLendServiceServer) GetLendingPool(context.Context, *GetLendingPoolRequest) (*GetLendingPoolResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLendingPool not implemented")
 }
-func (UnimplementedHyperLendServiceServer) GetSuppliedBalance(context.Context, *SuppliedBalanceRequest) (*SuppliedBalanceResponse, error) {
+func (UnimplementedHyperLendServiceServer) GetAPR(context.Context, *protocol.GetAPRRequest) (*protocol.GetAPRResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAPR not implemented")
+}
+func (UnimplementedHyperLendServiceServer) GetAPY(context.Context, *protocol.GetAPYRequest) (*protocol.GetAPYResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAPY not implemented")
+}
+func (UnimplementedHyperLendServiceServer) GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTVL not implemented")
+}
+func (UnimplementedHyperLendServiceServer) GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSuppliedBalance not implemented")
+}
+func (UnimplementedHyperLendServiceServer) GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBorrowedBalance not implemented")
 }
 
 // UnsafeHyperLendServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -168,24 +215,6 @@ func _HyperLendService_WithdrawERC20_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _HyperLendService_GetAPR_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAPRRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(HyperLendServiceServer).GetAPR(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: HyperLendService_GetAPR_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HyperLendServiceServer).GetAPR(ctx, req.(*GetAPRRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _HyperLendService_GetLendingPool_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetLendingPoolRequest)
 	if err := dec(in); err != nil {
@@ -204,8 +233,62 @@ func _HyperLendService_GetLendingPool_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HyperLendService_GetAPR_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetAPRRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HyperLendServiceServer).GetAPR(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HyperLendService_GetAPR_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HyperLendServiceServer).GetAPR(ctx, req.(*protocol.GetAPRRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HyperLendService_GetAPY_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetAPYRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HyperLendServiceServer).GetAPY(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HyperLendService_GetAPY_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HyperLendServiceServer).GetAPY(ctx, req.(*protocol.GetAPYRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HyperLendService_GetTVL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.GetTVLRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HyperLendServiceServer).GetTVL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HyperLendService_GetTVL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HyperLendServiceServer).GetTVL(ctx, req.(*protocol.GetTVLRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _HyperLendService_GetSuppliedBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SuppliedBalanceRequest)
+	in := new(protocol.SuppliedBalanceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -217,7 +300,25 @@ func _HyperLendService_GetSuppliedBalance_Handler(srv interface{}, ctx context.C
 		FullMethod: HyperLendService_GetSuppliedBalance_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(HyperLendServiceServer).GetSuppliedBalance(ctx, req.(*SuppliedBalanceRequest))
+		return srv.(HyperLendServiceServer).GetSuppliedBalance(ctx, req.(*protocol.SuppliedBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _HyperLendService_GetBorrowedBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(protocol.BorrowedBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HyperLendServiceServer).GetBorrowedBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HyperLendService_GetBorrowedBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HyperLendServiceServer).GetBorrowedBalance(ctx, req.(*protocol.BorrowedBalanceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -238,16 +339,28 @@ var HyperLendService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _HyperLendService_WithdrawERC20_Handler,
 		},
 		{
-			MethodName: "GetAPR",
-			Handler:    _HyperLendService_GetAPR_Handler,
-		},
-		{
 			MethodName: "GetLendingPool",
 			Handler:    _HyperLendService_GetLendingPool_Handler,
 		},
 		{
+			MethodName: "GetAPR",
+			Handler:    _HyperLendService_GetAPR_Handler,
+		},
+		{
+			MethodName: "GetAPY",
+			Handler:    _HyperLendService_GetAPY_Handler,
+		},
+		{
+			MethodName: "GetTVL",
+			Handler:    _HyperLendService_GetTVL_Handler,
+		},
+		{
 			MethodName: "GetSuppliedBalance",
 			Handler:    _HyperLendService_GetSuppliedBalance_Handler,
+		},
+		{
+			MethodName: "GetBorrowedBalance",
+			Handler:    _HyperLendService_GetBorrowedBalance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

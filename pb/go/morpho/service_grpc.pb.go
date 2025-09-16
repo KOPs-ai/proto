@@ -8,10 +8,11 @@ package morpho
 
 import (
 	context "context"
+
+	protocol "github.com/KOPs-ai/proto/pb/go/protocol"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	protocol "pb/go/protocol"
 )
 
 // This is a compile-time assertion to ensure that this generated file
