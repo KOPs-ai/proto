@@ -9,6 +9,7 @@ import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 import { GetAPYRequest, GetAPYResponse } from "./models/apy";
 import { GetProtocolBalanceRequest, GetProtocolBalanceResponse } from "./models/balance";
+import { GetHealthRequest, GetHealthResponse } from "./models/health";
 import {
   GetPermissionRequest,
   GetPermissionResponse,
@@ -29,6 +30,8 @@ export const protobufPackage = "strategy";
 export const STRATEGY_PACKAGE_NAME = "strategy";
 
 export interface StrategyServiceClient {
+  getHealth(request: GetHealthRequest): Observable<GetHealthResponse>;
+
   getStrategyList(request: GetStrategyListRequest): Observable<GetStrategyListResponse>;
 
   getPermission(request: GetPermissionRequest): Observable<GetPermissionResponse>;
@@ -45,6 +48,8 @@ export interface StrategyServiceClient {
 }
 
 export interface StrategyServiceController {
+  getHealth(request: GetHealthRequest): Promise<GetHealthResponse> | Observable<GetHealthResponse> | GetHealthResponse;
+
   getStrategyList(
     request: GetStrategyListRequest,
   ): Promise<GetStrategyListResponse> | Observable<GetStrategyListResponse> | GetStrategyListResponse;
@@ -75,6 +80,7 @@ export interface StrategyServiceController {
 export function StrategyServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
+      "getHealth",
       "getStrategyList",
       "getPermission",
       "updatePermission",
