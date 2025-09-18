@@ -17,6 +17,7 @@ export interface BiconomyAccountInfo {
   orchestratorAddress: string;
   chainId: number;
   index: number;
+  strategyId: string;
 }
 
 export interface GetBiconomyAccountResponse {
