@@ -7,6 +7,7 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { GetBiconomyAccountRequest, GetBiconomyAccountResponse } from "./models/account";
 import { GetAPYRequest, GetAPYResponse } from "./models/apy";
 import { GetProtocolBalanceRequest, GetProtocolBalanceResponse } from "./models/balance";
 import { GetHealthRequest, GetHealthResponse } from "./models/health";
@@ -45,6 +46,8 @@ export interface StrategyServiceClient {
   getApy(request: GetAPYRequest): Observable<GetAPYResponse>;
 
   getProtocolBalance(request: GetProtocolBalanceRequest): Observable<GetProtocolBalanceResponse>;
+
+  getBiconomyAccount(request: GetBiconomyAccountRequest): Observable<GetBiconomyAccountResponse>;
 }
 
 export interface StrategyServiceController {
@@ -75,6 +78,10 @@ export interface StrategyServiceController {
   getProtocolBalance(
     request: GetProtocolBalanceRequest,
   ): Promise<GetProtocolBalanceResponse> | Observable<GetProtocolBalanceResponse> | GetProtocolBalanceResponse;
+
+  getBiconomyAccount(
+    request: GetBiconomyAccountRequest,
+  ): Promise<GetBiconomyAccountResponse> | Observable<GetBiconomyAccountResponse> | GetBiconomyAccountResponse;
 }
 
 export function StrategyServiceControllerMethods() {
@@ -88,6 +95,7 @@ export function StrategyServiceControllerMethods() {
       "withdrawStrategy",
       "getApy",
       "getProtocolBalance",
+      "getBiconomyAccount",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
