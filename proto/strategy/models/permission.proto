@@ -3,7 +3,6 @@ syntax = "proto3";
 package strategy;
 option go_package = "pb/go/strategy;strategy";
 import "strategy/models/strategy.proto";
-import "google/protobuf/struct.proto";
 
 message GetPermissionRequest { string strategyId = 1; }
 
@@ -37,7 +36,7 @@ message UpdatePermissionRequest {
   string userAddress = 1;
   string strategyId = 2;
   string orchestratorAddress = 3;
-  repeated google.protobuf.Struct sessionDetail = 4;
+  string sessionDetail = 4;
 }
 
 message UpdatePermissionResponse {

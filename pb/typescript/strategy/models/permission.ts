@@ -5,8 +5,6 @@
 // source: strategy/models/permission.proto
 
 /* eslint-disable */
-import { wrappers } from "protobufjs";
-import { Struct } from "../../google/protobuf/struct";
 import { FeeToken } from "./strategy";
 
 export const protobufPackage = "strategy";
@@ -45,7 +43,7 @@ export interface UpdatePermissionRequest {
   userAddress: string;
   strategyId: string;
   orchestratorAddress: string;
-  sessionDetail: { [key: string]: any }[];
+  sessionDetail: string;
 }
 
 export interface UpdatePermissionResponse {
@@ -54,5 +52,3 @@ export interface UpdatePermissionResponse {
 }
 
 export const STRATEGY_PACKAGE_NAME = "strategy";
-
-wrappers[".google.protobuf.Struct"] = { fromObject: Struct.wrap, toObject: Struct.unwrap } as any;
