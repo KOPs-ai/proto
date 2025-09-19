@@ -32,6 +32,7 @@ export interface PermissionInfo {
   chainId: string;
   actions: PermissionAction[];
   feeToken: FeeToken | undefined;
+  verificationGas: string;
 }
 
 export interface GetPermissionResponse {

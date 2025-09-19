@@ -24,6 +24,7 @@ message PermissionInfo {
   string chainId = 2;
   repeated PermissionAction actions = 3;
   FeeToken feeToken = 4;
+  string verificationGas = 5;
 }
 
 message GetPermissionResponse {

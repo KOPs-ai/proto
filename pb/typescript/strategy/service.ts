@@ -7,8 +7,10 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
+import { GetBiconomyAccountRequest, GetBiconomyAccountResponse } from "./models/account";
 import { GetAPYRequest, GetAPYResponse } from "./models/apy";
 import { GetProtocolBalanceRequest, GetProtocolBalanceResponse } from "./models/balance";
+import { GetHealthRequest, GetHealthResponse } from "./models/health";
 import {
   GetPermissionRequest,
   GetPermissionResponse,
@@ -29,6 +31,8 @@ export const protobufPackage = "strategy";
 export const STRATEGY_PACKAGE_NAME = "strategy";
 
 export interface StrategyServiceClient {
+  getHealth(request: GetHealthRequest): Observable<GetHealthResponse>;
+
   getStrategyList(request: GetStrategyListRequest): Observable<GetStrategyListResponse>;
 
   getPermission(request: GetPermissionRequest): Observable<GetPermissionResponse>;
@@ -42,9 +46,13 @@ export interface StrategyServiceClient {
   getApy(request: GetAPYRequest): Observable<GetAPYResponse>;
 
   getProtocolBalance(request: GetProtocolBalanceRequest): Observable<GetProtocolBalanceResponse>;
+
+  getBiconomyAccount(request: GetBiconomyAccountRequest): Observable<GetBiconomyAccountResponse>;
 }
 
 export interface StrategyServiceController {
+  getHealth(request: GetHealthRequest): Promise<GetHealthResponse> | Observable<GetHealthResponse> | GetHealthResponse;
+
   getStrategyList(
     request: GetStrategyListRequest,
   ): Promise<GetStrategyListResponse> | Observable<GetStrategyListResponse> | GetStrategyListResponse;
@@ -70,11 +78,16 @@ export interface StrategyServiceController {
   getProtocolBalance(
     request: GetProtocolBalanceRequest,
   ): Promise<GetProtocolBalanceResponse> | Observable<GetProtocolBalanceResponse> | GetProtocolBalanceResponse;
+
+  getBiconomyAccount(
+    request: GetBiconomyAccountRequest,
+  ): Promise<GetBiconomyAccountResponse> | Observable<GetBiconomyAccountResponse> | GetBiconomyAccountResponse;
 }
 
 export function StrategyServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
+      "getHealth",
       "getStrategyList",
       "getPermission",
       "updatePermission",
@@ -82,6 +95,7 @@ export function StrategyServiceControllerMethods() {
       "withdrawStrategy",
       "getApy",
       "getProtocolBalance",
+      "getBiconomyAccount",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

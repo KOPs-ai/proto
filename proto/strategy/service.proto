@@ -5,10 +5,14 @@ import "strategy/models/strategy.proto";
 import "strategy/models/permission.proto";
 import "strategy/models/apy.proto";
 import "strategy/models/balance.proto";
+import "strategy/models/health.proto";
+import "strategy/models/account.proto";
 
 option go_package = "pb/go/strategy;strategy";
 
 service StrategyService {
+  rpc GetHealth(GetHealthRequest) returns (GetHealthResponse) {};
+
   rpc GetStrategyList(GetStrategyListRequest)
       returns (GetStrategyListResponse) {};
 
@@ -25,4 +29,7 @@ service StrategyService {
 
   rpc GetProtocolBalance(GetProtocolBalanceRequest)
       returns (GetProtocolBalanceResponse) {};
+
+  rpc GetBiconomyAccount(GetBiconomyAccountRequest)
+      returns (GetBiconomyAccountResponse) {};
 }

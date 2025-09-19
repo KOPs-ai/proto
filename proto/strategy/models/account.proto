@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package strategy;
+
+option go_package = "pb/go/strategy;strategy";
+
+message GetBiconomyAccountRequest { string userAddress = 1; }
+
+message BiconomyAccountInfo {
+  string userAddress = 1;
+  string orchestratorAddress = 2;
+  int64 chainId = 3;
+  int32 index = 4;
+  string strategyId = 5;
+}
+
+message GetBiconomyAccountResponse {
+  int64 code = 1;
+  string msg = 2;
+  repeated BiconomyAccountInfo data = 3;
+}
