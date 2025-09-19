@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v6.30.0--rc1
-// source: hyperlend/models/getAPR.proto
+// source: hyperlend/models/getApr.proto
 
 package hyperlend
 
@@ -32,7 +32,7 @@ type GetAPRRequest struct {
 func (x *GetAPRRequest) Reset() {
 	*x = GetAPRRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hyperlend_models_getAPR_proto_msgTypes[0]
+		mi := &file_hyperlend_models_getApr_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -45,7 +45,7 @@ func (x *GetAPRRequest) String() string {
 func (*GetAPRRequest) ProtoMessage() {}
 
 func (x *GetAPRRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_hyperlend_models_getAPR_proto_msgTypes[0]
+	mi := &file_hyperlend_models_getApr_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *GetAPRRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAPRRequest.ProtoReflect.Descriptor instead.
 func (*GetAPRRequest) Descriptor() ([]byte, []int) {
-	return file_hyperlend_models_getAPR_proto_rawDescGZIP(), []int{0}
+	return file_hyperlend_models_getApr_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetAPRRequest) GetTokenAddress() string {
@@ -87,7 +87,7 @@ type GetAPRResponse struct {
 func (x *GetAPRResponse) Reset() {
 	*x = GetAPRResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_hyperlend_models_getAPR_proto_msgTypes[1]
+		mi := &file_hyperlend_models_getApr_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -100,7 +100,7 @@ func (x *GetAPRResponse) String() string {
 func (*GetAPRResponse) ProtoMessage() {}
 
 func (x *GetAPRResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_hyperlend_models_getAPR_proto_msgTypes[1]
+	mi := &file_hyperlend_models_getApr_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +113,7 @@ func (x *GetAPRResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAPRResponse.ProtoReflect.Descriptor instead.
 func (*GetAPRResponse) Descriptor() ([]byte, []int) {
-	return file_hyperlend_models_getAPR_proto_rawDescGZIP(), []int{1}
+	return file_hyperlend_models_getApr_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetAPRResponse) GetSupplyAPR() string {
@@ -130,11 +130,11 @@ func (x *GetAPRResponse) GetBorrowAPR() string {
 	return ""
 }
 
-var File_hyperlend_models_getAPR_proto protoreflect.FileDescriptor
+var File_hyperlend_models_getApr_proto protoreflect.FileDescriptor
 
-var file_hyperlend_models_getAPR_proto_rawDesc = []byte{
+var file_hyperlend_models_getApr_proto_rawDesc = []byte{
 	0x0a, 0x1d, 0x68, 0x79, 0x70, 0x65, 0x72, 0x6c, 0x65, 0x6e, 0x64, 0x2f, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x73, 0x2f, 0x67, 0x65, 0x74, 0x41, 0x50, 0x52, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
+	0x6c, 0x73, 0x2f, 0x67, 0x65, 0x74, 0x41, 0x70, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x09, 0x68, 0x79, 0x70, 0x65, 0x72, 0x6c, 0x65, 0x6e, 0x64, 0x22, 0x55, 0x0a, 0x0d, 0x47, 0x65,
 	0x74, 0x41, 0x50, 0x52, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x74,
 	0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28,
@@ -152,23 +152,23 @@ var file_hyperlend_models_getAPR_proto_rawDesc = []byte{
 }
 
 var (
-	file_hyperlend_models_getAPR_proto_rawDescOnce sync.Once
-	file_hyperlend_models_getAPR_proto_rawDescData = file_hyperlend_models_getAPR_proto_rawDesc
+	file_hyperlend_models_getApr_proto_rawDescOnce sync.Once
+	file_hyperlend_models_getApr_proto_rawDescData = file_hyperlend_models_getApr_proto_rawDesc
 )
 
-func file_hyperlend_models_getAPR_proto_rawDescGZIP() []byte {
-	file_hyperlend_models_getAPR_proto_rawDescOnce.Do(func() {
-		file_hyperlend_models_getAPR_proto_rawDescData = protoimpl.X.CompressGZIP(file_hyperlend_models_getAPR_proto_rawDescData)
+func file_hyperlend_models_getApr_proto_rawDescGZIP() []byte {
+	file_hyperlend_models_getApr_proto_rawDescOnce.Do(func() {
+		file_hyperlend_models_getApr_proto_rawDescData = protoimpl.X.CompressGZIP(file_hyperlend_models_getApr_proto_rawDescData)
 	})
-	return file_hyperlend_models_getAPR_proto_rawDescData
+	return file_hyperlend_models_getApr_proto_rawDescData
 }
 
-var file_hyperlend_models_getAPR_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_hyperlend_models_getAPR_proto_goTypes = []interface{}{
+var file_hyperlend_models_getApr_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_hyperlend_models_getApr_proto_goTypes = []interface{}{
 	(*GetAPRRequest)(nil),  // 0: hyperlend.GetAPRRequest
 	(*GetAPRResponse)(nil), // 1: hyperlend.GetAPRResponse
 }
-var file_hyperlend_models_getAPR_proto_depIdxs = []int32{
+var file_hyperlend_models_getApr_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -176,13 +176,13 @@ var file_hyperlend_models_getAPR_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_hyperlend_models_getAPR_proto_init() }
-func file_hyperlend_models_getAPR_proto_init() {
-	if File_hyperlend_models_getAPR_proto != nil {
+func init() { file_hyperlend_models_getApr_proto_init() }
+func file_hyperlend_models_getApr_proto_init() {
+	if File_hyperlend_models_getApr_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_hyperlend_models_getAPR_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_hyperlend_models_getApr_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetAPRRequest); i {
 			case 0:
 				return &v.state
@@ -194,7 +194,7 @@ func file_hyperlend_models_getAPR_proto_init() {
 				return nil
 			}
 		}
-		file_hyperlend_models_getAPR_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_hyperlend_models_getApr_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetAPRResponse); i {
 			case 0:
 				return &v.state
@@ -211,18 +211,18 @@ func file_hyperlend_models_getAPR_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_hyperlend_models_getAPR_proto_rawDesc,
+			RawDescriptor: file_hyperlend_models_getApr_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_hyperlend_models_getAPR_proto_goTypes,
-		DependencyIndexes: file_hyperlend_models_getAPR_proto_depIdxs,
-		MessageInfos:      file_hyperlend_models_getAPR_proto_msgTypes,
+		GoTypes:           file_hyperlend_models_getApr_proto_goTypes,
+		DependencyIndexes: file_hyperlend_models_getApr_proto_depIdxs,
+		MessageInfos:      file_hyperlend_models_getApr_proto_msgTypes,
 	}.Build()
-	File_hyperlend_models_getAPR_proto = out.File
-	file_hyperlend_models_getAPR_proto_rawDesc = nil
-	file_hyperlend_models_getAPR_proto_goTypes = nil
-	file_hyperlend_models_getAPR_proto_depIdxs = nil
+	File_hyperlend_models_getApr_proto = out.File
+	file_hyperlend_models_getApr_proto_rawDesc = nil
+	file_hyperlend_models_getApr_proto_goTypes = nil
+	file_hyperlend_models_getApr_proto_depIdxs = nil
 }
