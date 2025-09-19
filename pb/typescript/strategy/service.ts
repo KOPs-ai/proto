@@ -11,6 +11,7 @@ import { GetBiconomyAccountRequest, GetBiconomyAccountResponse } from "./models/
 import { GetAPYRequest, GetAPYResponse } from "./models/apy";
 import { GetProtocolBalanceRequest, GetProtocolBalanceResponse } from "./models/balance";
 import { GetHealthRequest, GetHealthResponse } from "./models/health";
+import { GetCurrentStepRequest, GetCurrentStepResponse, GetUserJobsRequest, GetUserJobsResponse } from "./models/jobs";
 import {
   GetPermissionRequest,
   GetPermissionResponse,
@@ -48,6 +49,10 @@ export interface StrategyServiceClient {
   getProtocolBalance(request: GetProtocolBalanceRequest): Observable<GetProtocolBalanceResponse>;
 
   getBiconomyAccount(request: GetBiconomyAccountRequest): Observable<GetBiconomyAccountResponse>;
+
+  getUserJobs(request: GetUserJobsRequest): Observable<GetUserJobsResponse>;
+
+  getCurrentStep(request: GetCurrentStepRequest): Observable<GetCurrentStepResponse>;
 }
 
 export interface StrategyServiceController {
@@ -82,6 +87,14 @@ export interface StrategyServiceController {
   getBiconomyAccount(
     request: GetBiconomyAccountRequest,
   ): Promise<GetBiconomyAccountResponse> | Observable<GetBiconomyAccountResponse> | GetBiconomyAccountResponse;
+
+  getUserJobs(
+    request: GetUserJobsRequest,
+  ): Promise<GetUserJobsResponse> | Observable<GetUserJobsResponse> | GetUserJobsResponse;
+
+  getCurrentStep(
+    request: GetCurrentStepRequest,
+  ): Promise<GetCurrentStepResponse> | Observable<GetCurrentStepResponse> | GetCurrentStepResponse;
 }
 
 export function StrategyServiceControllerMethods() {
@@ -96,6 +109,8 @@ export function StrategyServiceControllerMethods() {
       "getApy",
       "getProtocolBalance",
       "getBiconomyAccount",
+      "getUserJobs",
+      "getCurrentStep",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

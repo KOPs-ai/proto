@@ -7,6 +7,7 @@ import "strategy/models/apy.proto";
 import "strategy/models/balance.proto";
 import "strategy/models/health.proto";
 import "strategy/models/account.proto";
+import "strategy/models/jobs.proto";
 
 option go_package = "pb/go/strategy;strategy";
 
@@ -32,4 +33,8 @@ service StrategyService {
 
   rpc GetBiconomyAccount(GetBiconomyAccountRequest)
       returns (GetBiconomyAccountResponse) {};
+
+  rpc GetUserJobs(GetUserJobsRequest) returns (GetUserJobsResponse) {};
+
+  rpc GetCurrentStep(GetCurrentStepRequest) returns (GetCurrentStepResponse) {};
 }

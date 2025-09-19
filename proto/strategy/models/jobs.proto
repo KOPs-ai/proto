@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package strategy;
+
+option go_package = "pb/go/strategy;strategy";
+
+message GetUserJobsRequest { string userAddress = 1; }
+
+message UserJobInfo {
+  string jobId = 1;
+  int32 currentStep = 2;
+  int32 totalSteps = 3;
+  string strategyId = 4;
+  string action = 5;
+}
+
+message GetUserJobsResponse {
+  int64 code = 1;
+  string msg = 2;
+  repeated UserJobInfo data = 3;
+}
+
+message GetCurrentStepRequest { string jobId = 1; }
+
+message CurrentStepInfo {
+  int32 currentStep = 1;
+  string stepName = 2;
+  int32 totalSteps = 3;
+  string strategyId = 4;
+  string type = 5;
+}
+
+message GetCurrentStepResponse {
+  int64 code = 1;
+  string msg = 2;
+  CurrentStepInfo data = 3;
+}
