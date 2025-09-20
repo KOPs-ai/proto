@@ -31,6 +31,7 @@ export interface Instruction {
 export interface UsePermissionResponse {
   chainId: number;
   txHash: string;
+  superTxHash: string;
 }
 
 export const BICONOMY_PACKAGE_NAME = "biconomy";

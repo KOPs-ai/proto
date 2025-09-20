@@ -27,4 +27,5 @@ message Instruction {
 message UsePermissionResponse {
   int64 chainId = 1;
   string txHash = 2;
+  string superTxHash = 3;
 }
