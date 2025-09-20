@@ -20,6 +20,8 @@ export interface WithdrawERC20Request {
 export interface WithdrawERC20Response {
   chainId: number;
   txHash: string;
+  amount: string;
+  superTxHash: string;
 }
 
 export const HYPERLEND_PACKAGE_NAME = "hyperlend";

@@ -21,6 +21,7 @@ export interface WithdrawERC20Response {
   chainId: number;
   txHash: string;
   amount: string;
+  superTxHash: string;
 }
 
 export const HYPURRFI_PACKAGE_NAME = "hypurrfi";

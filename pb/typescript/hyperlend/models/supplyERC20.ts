@@ -21,6 +21,7 @@ export interface SupplyERC20Response {
   chainId: number;
   txHash: string;
   amount: string;
+  superTxHash: string;
 }
 
 export const HYPERLEND_PACKAGE_NAME = "hyperlend";

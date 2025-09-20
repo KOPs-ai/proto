@@ -17,4 +17,5 @@ message SupplyERC20Response {
   int64 chainId = 1;
   string txHash = 2;
   string amount = 3;
+  string superTxHash = 4;
 }
