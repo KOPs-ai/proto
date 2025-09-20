@@ -61,6 +61,7 @@ export interface StartStrategyResponse {
 export interface WithdrawStrategyRequest {
   strategyId: string;
   userAddress: string;
+  txHash: string;
 }
 
 export interface WithdrawStrategyResponse {

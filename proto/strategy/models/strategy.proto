@@ -53,6 +53,7 @@ message StartStrategyResponse {
 message WithdrawStrategyRequest {
   string strategyId = 1;
   string userAddress = 2;
+  string txHash = 3;
 }
 
 message WithdrawStrategyResponse {
