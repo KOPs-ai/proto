@@ -17,6 +17,8 @@ message ProtocolBalanceInfo {
   string amount = 4;
   string decimals = 5;
   string action = 6;
+  string symbol = 7;
+  string logo = 8;
 }
 
 message GetProtocolBalanceResponse {

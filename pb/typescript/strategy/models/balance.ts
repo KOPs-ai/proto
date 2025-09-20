@@ -21,6 +21,8 @@ export interface ProtocolBalanceInfo {
   amount: string;
   decimals: string;
   action: string;
+  symbol: string;
+  logo: string;
 }
 
 export interface GetProtocolBalanceResponse {
