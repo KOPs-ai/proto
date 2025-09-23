@@ -20,6 +20,7 @@ message PermissionAction {
   string actionPolicies = 7;
   string createdAt = 8;
   string updatedAt = 9;
+  string policyType = 10;
 }
 
 message PermissionInfo {

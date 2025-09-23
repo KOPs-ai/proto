@@ -25,6 +25,7 @@ export interface PermissionAction {
   actionPolicies: string;
   createdAt: string;
   updatedAt: string;
+  policyType: string;
 }
 
 export interface PermissionInfo {
