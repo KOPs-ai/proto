@@ -4,7 +4,11 @@ package strategy;
 option go_package = "pb/go/strategy;strategy";
 import "strategy/models/strategy.proto";
 
-message GetPermissionRequest { string strategyId = 1; }
+message GetPermissionRequest {
+  string strategyId = 1;
+  string userAddress = 2;
+  string orchestratorAddress = 3;
+}
 
 message PermissionAction {
   optional string id = 1;

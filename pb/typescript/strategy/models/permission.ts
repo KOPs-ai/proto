@@ -11,6 +11,8 @@ export const protobufPackage = "strategy";
 
 export interface GetPermissionRequest {
   strategyId: string;
+  userAddress: string;
+  orchestratorAddress: string;
 }
 
 export interface PermissionAction {
