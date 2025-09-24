@@ -29,6 +29,7 @@ const (
 	HypurrfiService_GetTVL_FullMethodName             = "/hypurrfi.HypurrfiService/GetTVL"
 	HypurrfiService_GetSuppliedBalance_FullMethodName = "/hypurrfi.HypurrfiService/GetSuppliedBalance"
 	HypurrfiService_GetBorrowedBalance_FullMethodName = "/hypurrfi.HypurrfiService/GetBorrowedBalance"
+	HypurrfiService_ApproveERC20_FullMethodName       = "/hypurrfi.HypurrfiService/ApproveERC20"
 )
 
 // HypurrfiServiceClient is the client API for HypurrfiService service.
@@ -43,6 +44,7 @@ type HypurrfiServiceClient interface {
 	GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error)
 	GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error)
 	GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error)
+	ApproveERC20(ctx context.Context, in *ApproveERC20Request, opts ...grpc.CallOption) (*ApproveERC20Response, error)
 }
 
 type hypurrfiServiceClient struct {
@@ -125,6 +127,15 @@ func (c *hypurrfiServiceClient) GetBorrowedBalance(ctx context.Context, in *prot
 	return out, nil
 }
 
+func (c *hypurrfiServiceClient) ApproveERC20(ctx context.Context, in *ApproveERC20Request, opts ...grpc.CallOption) (*ApproveERC20Response, error) {
+	out := new(ApproveERC20Response)
+	err := c.cc.Invoke(ctx, HypurrfiService_ApproveERC20_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HypurrfiServiceServer is the server API for HypurrfiService service.
 // All implementations should embed UnimplementedHypurrfiServiceServer
 // for forward compatibility
@@ -137,6 +148,7 @@ type HypurrfiServiceServer interface {
 	GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error)
 	GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error)
 	GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error)
+	ApproveERC20(context.Context, *ApproveERC20Request) (*ApproveERC20Response, error)
 }
 
 // UnimplementedHypurrfiServiceServer should be embedded to have forward compatible implementations.
@@ -166,6 +178,9 @@ func (UnimplementedHypurrfiServiceServer) GetSuppliedBalance(context.Context, *p
 }
 func (UnimplementedHypurrfiServiceServer) GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBorrowedBalance not implemented")
+}
+func (UnimplementedHypurrfiServiceServer) ApproveERC20(context.Context, *ApproveERC20Request) (*ApproveERC20Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ApproveERC20 not implemented")
 }
 
 // UnsafeHypurrfiServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -323,6 +338,24 @@ func _HypurrfiService_GetBorrowedBalance_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HypurrfiService_ApproveERC20_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApproveERC20Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HypurrfiServiceServer).ApproveERC20(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HypurrfiService_ApproveERC20_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HypurrfiServiceServer).ApproveERC20(ctx, req.(*ApproveERC20Request))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HypurrfiService_ServiceDesc is the grpc.ServiceDesc for HypurrfiService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -361,6 +394,10 @@ var HypurrfiService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBorrowedBalance",
 			Handler:    _HypurrfiService_GetBorrowedBalance_Handler,
+		},
+		{
+			MethodName: "ApproveERC20",
+			Handler:    _HypurrfiService_ApproveERC20_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

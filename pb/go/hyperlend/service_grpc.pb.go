@@ -29,6 +29,7 @@ const (
 	HyperLendService_GetTVL_FullMethodName             = "/hyperlend.HyperLendService/GetTVL"
 	HyperLendService_GetSuppliedBalance_FullMethodName = "/hyperlend.HyperLendService/GetSuppliedBalance"
 	HyperLendService_GetBorrowedBalance_FullMethodName = "/hyperlend.HyperLendService/GetBorrowedBalance"
+	HyperLendService_ApproveERC20_FullMethodName       = "/hyperlend.HyperLendService/ApproveERC20"
 )
 
 // HyperLendServiceClient is the client API for HyperLendService service.
@@ -43,6 +44,7 @@ type HyperLendServiceClient interface {
 	GetTVL(ctx context.Context, in *protocol.GetTVLRequest, opts ...grpc.CallOption) (*protocol.GetTVLResponse, error)
 	GetSuppliedBalance(ctx context.Context, in *protocol.SuppliedBalanceRequest, opts ...grpc.CallOption) (*protocol.SuppliedBalanceResponse, error)
 	GetBorrowedBalance(ctx context.Context, in *protocol.BorrowedBalanceRequest, opts ...grpc.CallOption) (*protocol.BorrowedBalanceResponse, error)
+	ApproveERC20(ctx context.Context, in *ApproveERC20Request, opts ...grpc.CallOption) (*ApproveERC20Response, error)
 }
 
 type hyperLendServiceClient struct {
@@ -125,6 +127,15 @@ func (c *hyperLendServiceClient) GetBorrowedBalance(ctx context.Context, in *pro
 	return out, nil
 }
 
+func (c *hyperLendServiceClient) ApproveERC20(ctx context.Context, in *ApproveERC20Request, opts ...grpc.CallOption) (*ApproveERC20Response, error) {
+	out := new(ApproveERC20Response)
+	err := c.cc.Invoke(ctx, HyperLendService_ApproveERC20_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // HyperLendServiceServer is the server API for HyperLendService service.
 // All implementations should embed UnimplementedHyperLendServiceServer
 // for forward compatibility
@@ -137,6 +148,7 @@ type HyperLendServiceServer interface {
 	GetTVL(context.Context, *protocol.GetTVLRequest) (*protocol.GetTVLResponse, error)
 	GetSuppliedBalance(context.Context, *protocol.SuppliedBalanceRequest) (*protocol.SuppliedBalanceResponse, error)
 	GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error)
+	ApproveERC20(context.Context, *ApproveERC20Request) (*ApproveERC20Response, error)
 }
 
 // UnimplementedHyperLendServiceServer should be embedded to have forward compatible implementations.
@@ -166,6 +178,9 @@ func (UnimplementedHyperLendServiceServer) GetSuppliedBalance(context.Context, *
 }
 func (UnimplementedHyperLendServiceServer) GetBorrowedBalance(context.Context, *protocol.BorrowedBalanceRequest) (*protocol.BorrowedBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBorrowedBalance not implemented")
+}
+func (UnimplementedHyperLendServiceServer) ApproveERC20(context.Context, *ApproveERC20Request) (*ApproveERC20Response, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ApproveERC20 not implemented")
 }
 
 // UnsafeHyperLendServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -323,6 +338,24 @@ func _HyperLendService_GetBorrowedBalance_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _HyperLendService_ApproveERC20_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ApproveERC20Request)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(HyperLendServiceServer).ApproveERC20(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: HyperLendService_ApproveERC20_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(HyperLendServiceServer).ApproveERC20(ctx, req.(*ApproveERC20Request))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // HyperLendService_ServiceDesc is the grpc.ServiceDesc for HyperLendService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -361,6 +394,10 @@ var HyperLendService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBorrowedBalance",
 			Handler:    _HyperLendService_GetBorrowedBalance_Handler,
+		},
+		{
+			MethodName: "ApproveERC20",
+			Handler:    _HyperLendService_ApproveERC20_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
