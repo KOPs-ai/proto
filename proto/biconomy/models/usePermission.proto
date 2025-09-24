@@ -17,6 +17,7 @@ message Call {
   string value = 2;
   string data = 3;
   string functionSelector = 4;
+  string permissionId = 5;
 }
 
 message Instruction {

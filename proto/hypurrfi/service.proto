@@ -4,6 +4,7 @@ package hypurrfi;
 import "hypurrfi/models/supplyERC20.proto";
 import "hypurrfi/models/withdrawERC20.proto";
 import "hypurrfi/models/getLendingPool.proto";
+import "hypurrfi/models/approveERC20.proto";
 
 import "protocol/models/supplyERC20.proto";
 import "protocol/models/withdrawERC20.proto";
@@ -17,7 +18,7 @@ service HypurrfiService {
   rpc SupplyERC20(SupplyERC20Request) returns (SupplyERC20Response) {};
   rpc WithdrawERC20(WithdrawERC20Request) returns (WithdrawERC20Response) {};
   rpc GetLendingPool(GetLendingPoolRequest) returns (GetLendingPoolResponse) {};
-  
+
   rpc GetAPR(protocol.GetAPRRequest) returns (protocol.GetAPRResponse) {};
   rpc GetAPY(protocol.GetAPYRequest) returns (protocol.GetAPYResponse) {};
   rpc GetTVL(protocol.GetTVLRequest) returns (protocol.GetTVLResponse) {};
@@ -25,4 +26,6 @@ service HypurrfiService {
       returns (protocol.SuppliedBalanceResponse) {};
   rpc GetBorrowedBalance(protocol.BorrowedBalanceRequest)
       returns (protocol.BorrowedBalanceResponse) {};
+
+  rpc ApproveERC20(ApproveERC20Request) returns (ApproveERC20Response) {};
 }

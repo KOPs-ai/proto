@@ -15,6 +15,7 @@ export interface SupplyERC20Request {
   poolAddress: string;
   amount: string;
   assetAddress: string;
+  permissionId: string;
 }
 
 export interface SupplyERC20Response {

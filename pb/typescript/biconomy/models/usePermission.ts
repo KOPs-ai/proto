@@ -21,6 +21,7 @@ export interface Call {
   value: string;
   data: string;
   functionSelector: string;
+  permissionId: string;
 }
 
 export interface Instruction {

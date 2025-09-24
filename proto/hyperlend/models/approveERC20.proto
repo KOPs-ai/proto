@@ -4,19 +4,24 @@ package hyperlend;
 
 option go_package = "pb/go/hyperlend;hyperlend";
 
-message SupplyERC20Request {
+message ApproveERC20Request {
   string userAddress = 1;
   string orchestratorAddress = 2;
   string strategyId = 3;
-  string poolAddress = 4;
+  string spenderAddress = 4;
   string amount = 5;
   string assetAddress = 6;
   string permissionId = 7;
 }
 
-message SupplyERC20Response {
-  int64 chainId = 1;
-  string txHash = 2;
-  string amount = 3;
-  string superTxHash = 4;
+message ApproveERC20Data {
+  string txHash = 1;
+  string amount = 2;
+  string superTxHash = 3;
+}
+
+message ApproveERC20Response {
+  int64 code = 1;
+  string msg = 2;
+  ApproveERC20Data data = 3;
 }

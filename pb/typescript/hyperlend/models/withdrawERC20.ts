@@ -15,6 +15,7 @@ export interface WithdrawERC20Request {
   poolAddress: string;
   assetAddress: string;
   amount: string;
+  permissionId: string;
 }
 
 export interface WithdrawERC20Response {

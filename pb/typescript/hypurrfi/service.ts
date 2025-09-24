@@ -12,6 +12,7 @@ import { GetAPYRequest, GetAPYResponse } from "../protocol/models/getAPY";
 import { GetTVLRequest, GetTVLResponse } from "../protocol/models/getTVL";
 import { SuppliedBalanceRequest, SuppliedBalanceResponse } from "../protocol/models/supplyERC20";
 import { BorrowedBalanceRequest, BorrowedBalanceResponse } from "../protocol/models/withdrawERC20";
+import { ApproveERC20Request, ApproveERC20Response } from "./models/approveERC20";
 import { GetLendingPoolRequest, GetLendingPoolResponse } from "./models/getLendingPool";
 import { SupplyERC20Request, SupplyERC20Response } from "./models/supplyERC20";
 import { WithdrawERC20Request, WithdrawERC20Response } from "./models/withdrawERC20";
@@ -36,6 +37,8 @@ export interface HypurrfiServiceClient {
   getSuppliedBalance(request: SuppliedBalanceRequest): Observable<SuppliedBalanceResponse>;
 
   getBorrowedBalance(request: BorrowedBalanceRequest): Observable<BorrowedBalanceResponse>;
+
+  approveErc20(request: ApproveERC20Request): Observable<ApproveERC20Response>;
 }
 
 export interface HypurrfiServiceController {
@@ -64,6 +67,10 @@ export interface HypurrfiServiceController {
   getBorrowedBalance(
     request: BorrowedBalanceRequest,
   ): Promise<BorrowedBalanceResponse> | Observable<BorrowedBalanceResponse> | BorrowedBalanceResponse;
+
+  approveErc20(
+    request: ApproveERC20Request,
+  ): Promise<ApproveERC20Response> | Observable<ApproveERC20Response> | ApproveERC20Response;
 }
 
 export function HypurrfiServiceControllerMethods() {
@@ -77,6 +84,7 @@ export function HypurrfiServiceControllerMethods() {
       "getTvl",
       "getSuppliedBalance",
       "getBorrowedBalance",
+      "approveErc20",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

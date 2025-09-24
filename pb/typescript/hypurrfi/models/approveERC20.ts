@@ -2,27 +2,32 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.7
 //   protoc               v6.32.1
-// source: hypurrfi/models/withdrawERC20.proto
+// source: hypurrfi/models/approveERC20.proto
 
 /* eslint-disable */
 
 export const protobufPackage = "hypurrfi";
 
-export interface WithdrawERC20Request {
+export interface ApproveERC20Request {
   userAddress: string;
   orchestratorAddress: string;
   strategyId: string;
-  poolAddress: string;
-  assetAddress: string;
+  spenderAddress: string;
   amount: string;
+  assetAddress: string;
   permissionId: string;
 }
 
-export interface WithdrawERC20Response {
-  chainId: number;
+export interface ApproveERC20Data {
   txHash: string;
   amount: string;
   superTxHash: string;
+}
+
+export interface ApproveERC20Response {
+  code: number;
+  msg: string;
+  data: ApproveERC20Data | undefined;
 }
 
 export const HYPURRFI_PACKAGE_NAME = "hypurrfi";

@@ -4,6 +4,7 @@ package hyperlend;
 import "hyperlend/models/supplyERC20.proto";
 import "hyperlend/models/withdrawERC20.proto";
 import "hyperlend/models/getLendingPool.proto";
+import "hyperlend/models/approveERC20.proto";
 
 import "protocol/models/supplyERC20.proto";
 import "protocol/models/withdrawERC20.proto";
@@ -17,7 +18,7 @@ service HyperLendService {
   rpc SupplyERC20(SupplyERC20Request) returns (SupplyERC20Response) {};
   rpc WithdrawERC20(WithdrawERC20Request) returns (WithdrawERC20Response) {};
   rpc GetLendingPool(GetLendingPoolRequest) returns (GetLendingPoolResponse) {};
-  
+
   rpc GetAPR(protocol.GetAPRRequest) returns (protocol.GetAPRResponse) {};
   rpc GetAPY(protocol.GetAPYRequest) returns (protocol.GetAPYResponse) {};
   rpc GetTVL(protocol.GetTVLRequest) returns (protocol.GetTVLResponse) {};
@@ -25,4 +26,5 @@ service HyperLendService {
       returns (protocol.SuppliedBalanceResponse) {};
   rpc GetBorrowedBalance(protocol.BorrowedBalanceRequest)
       returns (protocol.BorrowedBalanceResponse) {};
+  rpc ApproveERC20(ApproveERC20Request) returns (ApproveERC20Response) {};
 }

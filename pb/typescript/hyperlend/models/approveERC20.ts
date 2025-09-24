@@ -2,27 +2,32 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.7
 //   protoc               v6.32.1
-// source: hyperlend/models/supplyERC20.proto
+// source: hyperlend/models/approveERC20.proto
 
 /* eslint-disable */
 
 export const protobufPackage = "hyperlend";
 
-export interface SupplyERC20Request {
+export interface ApproveERC20Request {
   userAddress: string;
   orchestratorAddress: string;
   strategyId: string;
-  poolAddress: string;
+  spenderAddress: string;
   amount: string;
   assetAddress: string;
   permissionId: string;
 }
 
-export interface SupplyERC20Response {
-  chainId: number;
+export interface ApproveERC20Data {
   txHash: string;
   amount: string;
   superTxHash: string;
+}
+
+export interface ApproveERC20Response {
+  code: number;
+  msg: string;
+  data: ApproveERC20Data | undefined;
 }
 
 export const HYPERLEND_PACKAGE_NAME = "hyperlend";
