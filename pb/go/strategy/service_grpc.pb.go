@@ -18,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StrategyServiceClient interface {
+	GetHealth(ctx context.Context, in *GetHealthRequest, opts ...grpc.CallOption) (*GetHealthResponse, error)
 	GetStrategyList(ctx context.Context, in *GetStrategyListRequest, opts ...grpc.CallOption) (*GetStrategyListResponse, error)
 	GetPermission(ctx context.Context, in *GetPermissionRequest, opts ...grpc.CallOption) (*GetPermissionResponse, error)
 	UpdatePermission(ctx context.Context, in *UpdatePermissionRequest, opts ...grpc.CallOption) (*UpdatePermissionResponse, error)
@@ -25,6 +26,9 @@ type StrategyServiceClient interface {
 	WithdrawStrategy(ctx context.Context, in *WithdrawStrategyRequest, opts ...grpc.CallOption) (*WithdrawStrategyResponse, error)
 	GetAPY(ctx context.Context, in *GetAPYRequest, opts ...grpc.CallOption) (*GetAPYResponse, error)
 	GetProtocolBalance(ctx context.Context, in *GetProtocolBalanceRequest, opts ...grpc.CallOption) (*GetProtocolBalanceResponse, error)
+	GetBiconomyAccount(ctx context.Context, in *GetBiconomyAccountRequest, opts ...grpc.CallOption) (*GetBiconomyAccountResponse, error)
+	GetUserJobs(ctx context.Context, in *GetUserJobsRequest, opts ...grpc.CallOption) (*GetUserJobsResponse, error)
+	GetCurrentStep(ctx context.Context, in *GetCurrentStepRequest, opts ...grpc.CallOption) (*GetCurrentStepResponse, error)
 }
 
 type strategyServiceClient struct {
@@ -33,6 +37,15 @@ type strategyServiceClient struct {
 
 func NewStrategyServiceClient(cc grpc.ClientConnInterface) StrategyServiceClient {
 	return &strategyServiceClient{cc}
+}
+
+func (c *strategyServiceClient) GetHealth(ctx context.Context, in *GetHealthRequest, opts ...grpc.CallOption) (*GetHealthResponse, error) {
+	out := new(GetHealthResponse)
+	err := c.cc.Invoke(ctx, "/strategy.StrategyService/GetHealth", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *strategyServiceClient) GetStrategyList(ctx context.Context, in *GetStrategyListRequest, opts ...grpc.CallOption) (*GetStrategyListResponse, error) {
@@ -98,10 +111,38 @@ func (c *strategyServiceClient) GetProtocolBalance(ctx context.Context, in *GetP
 	return out, nil
 }
 
+func (c *strategyServiceClient) GetBiconomyAccount(ctx context.Context, in *GetBiconomyAccountRequest, opts ...grpc.CallOption) (*GetBiconomyAccountResponse, error) {
+	out := new(GetBiconomyAccountResponse)
+	err := c.cc.Invoke(ctx, "/strategy.StrategyService/GetBiconomyAccount", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *strategyServiceClient) GetUserJobs(ctx context.Context, in *GetUserJobsRequest, opts ...grpc.CallOption) (*GetUserJobsResponse, error) {
+	out := new(GetUserJobsResponse)
+	err := c.cc.Invoke(ctx, "/strategy.StrategyService/GetUserJobs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *strategyServiceClient) GetCurrentStep(ctx context.Context, in *GetCurrentStepRequest, opts ...grpc.CallOption) (*GetCurrentStepResponse, error) {
+	out := new(GetCurrentStepResponse)
+	err := c.cc.Invoke(ctx, "/strategy.StrategyService/GetCurrentStep", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StrategyServiceServer is the server API for StrategyService service.
 // All implementations should embed UnimplementedStrategyServiceServer
 // for forward compatibility
 type StrategyServiceServer interface {
+	GetHealth(context.Context, *GetHealthRequest) (*GetHealthResponse, error)
 	GetStrategyList(context.Context, *GetStrategyListRequest) (*GetStrategyListResponse, error)
 	GetPermission(context.Context, *GetPermissionRequest) (*GetPermissionResponse, error)
 	UpdatePermission(context.Context, *UpdatePermissionRequest) (*UpdatePermissionResponse, error)
@@ -109,12 +150,18 @@ type StrategyServiceServer interface {
 	WithdrawStrategy(context.Context, *WithdrawStrategyRequest) (*WithdrawStrategyResponse, error)
 	GetAPY(context.Context, *GetAPYRequest) (*GetAPYResponse, error)
 	GetProtocolBalance(context.Context, *GetProtocolBalanceRequest) (*GetProtocolBalanceResponse, error)
+	GetBiconomyAccount(context.Context, *GetBiconomyAccountRequest) (*GetBiconomyAccountResponse, error)
+	GetUserJobs(context.Context, *GetUserJobsRequest) (*GetUserJobsResponse, error)
+	GetCurrentStep(context.Context, *GetCurrentStepRequest) (*GetCurrentStepResponse, error)
 }
 
 // UnimplementedStrategyServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedStrategyServiceServer struct {
 }
 
+func (UnimplementedStrategyServiceServer) GetHealth(context.Context, *GetHealthRequest) (*GetHealthResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHealth not implemented")
+}
 func (UnimplementedStrategyServiceServer) GetStrategyList(context.Context, *GetStrategyListRequest) (*GetStrategyListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStrategyList not implemented")
 }
@@ -136,6 +183,15 @@ func (UnimplementedStrategyServiceServer) GetAPY(context.Context, *GetAPYRequest
 func (UnimplementedStrategyServiceServer) GetProtocolBalance(context.Context, *GetProtocolBalanceRequest) (*GetProtocolBalanceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProtocolBalance not implemented")
 }
+func (UnimplementedStrategyServiceServer) GetBiconomyAccount(context.Context, *GetBiconomyAccountRequest) (*GetBiconomyAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBiconomyAccount not implemented")
+}
+func (UnimplementedStrategyServiceServer) GetUserJobs(context.Context, *GetUserJobsRequest) (*GetUserJobsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserJobs not implemented")
+}
+func (UnimplementedStrategyServiceServer) GetCurrentStep(context.Context, *GetCurrentStepRequest) (*GetCurrentStepResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCurrentStep not implemented")
+}
 
 // UnsafeStrategyServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to StrategyServiceServer will
@@ -146,6 +202,24 @@ type UnsafeStrategyServiceServer interface {
 
 func RegisterStrategyServiceServer(s grpc.ServiceRegistrar, srv StrategyServiceServer) {
 	s.RegisterService(&StrategyService_ServiceDesc, srv)
+}
+
+func _StrategyService_GetHealth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHealthRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StrategyServiceServer).GetHealth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/strategy.StrategyService/GetHealth",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StrategyServiceServer).GetHealth(ctx, req.(*GetHealthRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _StrategyService_GetStrategyList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -274,6 +348,60 @@ func _StrategyService_GetProtocolBalance_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StrategyService_GetBiconomyAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBiconomyAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StrategyServiceServer).GetBiconomyAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/strategy.StrategyService/GetBiconomyAccount",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StrategyServiceServer).GetBiconomyAccount(ctx, req.(*GetBiconomyAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StrategyService_GetUserJobs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserJobsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StrategyServiceServer).GetUserJobs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/strategy.StrategyService/GetUserJobs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StrategyServiceServer).GetUserJobs(ctx, req.(*GetUserJobsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StrategyService_GetCurrentStep_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCurrentStepRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StrategyServiceServer).GetCurrentStep(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/strategy.StrategyService/GetCurrentStep",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StrategyServiceServer).GetCurrentStep(ctx, req.(*GetCurrentStepRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // StrategyService_ServiceDesc is the grpc.ServiceDesc for StrategyService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -281,6 +409,10 @@ var StrategyService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "strategy.StrategyService",
 	HandlerType: (*StrategyServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetHealth",
+			Handler:    _StrategyService_GetHealth_Handler,
+		},
 		{
 			MethodName: "GetStrategyList",
 			Handler:    _StrategyService_GetStrategyList_Handler,
@@ -308,6 +440,18 @@ var StrategyService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetProtocolBalance",
 			Handler:    _StrategyService_GetProtocolBalance_Handler,
+		},
+		{
+			MethodName: "GetBiconomyAccount",
+			Handler:    _StrategyService_GetBiconomyAccount_Handler,
+		},
+		{
+			MethodName: "GetUserJobs",
+			Handler:    _StrategyService_GetUserJobs_Handler,
+		},
+		{
+			MethodName: "GetCurrentStep",
+			Handler:    _StrategyService_GetCurrentStep_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
