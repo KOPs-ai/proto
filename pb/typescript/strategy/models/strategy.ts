@@ -11,6 +11,7 @@ import { ProtocolInfo } from "./protocol";
 export const protobufPackage = "strategy";
 
 export interface GetStrategyListRequest {
+  product: string;
 }
 
 export interface FeeToken {

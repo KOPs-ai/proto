@@ -5,7 +5,7 @@ option go_package = "pb/go/strategy;strategy";
 import "strategy/models/protocol.proto";
 import "strategy/models/asset.proto";
 
-message GetStrategyListRequest {}
+message GetStrategyListRequest { string product = 1; }
 
 message FeeToken {
   string address = 1;
