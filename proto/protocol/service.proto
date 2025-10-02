@@ -6,6 +6,9 @@ import "protocol/models/withdrawERC20.proto";
 import "protocol/models/getAPR.proto";
 import "protocol/models/getAPY.proto";
 import "protocol/models/getTVL.proto";
+import "protocol/models/getLTV.proto";
+import "protocol/models/getBorrowCap.proto";
+import "protocol/models/getSupplyCap.proto";
 
 option go_package = "pb/go/protocol;protocol";
 
@@ -13,6 +16,9 @@ service ProtocolService {
   rpc GetAPR(GetAPRRequest) returns (GetAPRResponse) {};
   rpc GetAPY(GetAPYRequest) returns (GetAPYResponse) {};
   rpc GetTVL(GetTVLRequest) returns (GetTVLResponse) {};
+  rpc GetLTV(GetLTVRequest) returns (GetLTVResponse) {};
+  rpc GetBorrowCap(GetBorrowCapRequest) returns (GetBorrowCapResponse) {};
+  rpc GetSupplyCap(GetSupplyCapRequest) returns (GetSupplyCapResponse) {};
   rpc GetSuppliedBalance(SuppliedBalanceRequest)
       returns (SuppliedBalanceResponse) {};
   rpc GetBorrowedBalance(BorrowedBalanceRequest)

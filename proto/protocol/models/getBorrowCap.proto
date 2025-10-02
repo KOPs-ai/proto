@@ -4,14 +4,11 @@ package protocol;
 
 option go_package = "pb/go/protocol;protocol";
 
-message GetAPRRequest {
+message GetBorrowCapRequest {
   string tokenAddress = 1;
   string poolAddress = 2;
   int64 chainId = 3;
   string protocol = 4;
 }
 
-message GetAPRResponse {
-  string supplyAPR = 1;
-  string borrowAPR = 2;
-}
+message GetBorrowCapResponse { double BorrowCap = 1; }

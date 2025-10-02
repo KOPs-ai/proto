@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.0
 // 	protoc        v5.29.3
-// source: protocol/models/getTVL.proto
+// source: protocol/models/getLTV.proto
 
 package protocol
 
@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetTVLRequest struct {
+type GetLTVRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -31,23 +31,23 @@ type GetTVLRequest struct {
 	Protocol     string `protobuf:"bytes,4,opt,name=protocol,proto3" json:"protocol,omitempty"`
 }
 
-func (x *GetTVLRequest) Reset() {
-	*x = GetTVLRequest{}
+func (x *GetLTVRequest) Reset() {
+	*x = GetLTVRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_protocol_models_getTVL_proto_msgTypes[0]
+		mi := &file_protocol_models_getLTV_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *GetTVLRequest) String() string {
+func (x *GetLTVRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTVLRequest) ProtoMessage() {}
+func (*GetLTVRequest) ProtoMessage() {}
 
-func (x *GetTVLRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_protocol_models_getTVL_proto_msgTypes[0]
+func (x *GetLTVRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protocol_models_getLTV_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,64 +58,64 @@ func (x *GetTVLRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTVLRequest.ProtoReflect.Descriptor instead.
-func (*GetTVLRequest) Descriptor() ([]byte, []int) {
-	return file_protocol_models_getTVL_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use GetLTVRequest.ProtoReflect.Descriptor instead.
+func (*GetLTVRequest) Descriptor() ([]byte, []int) {
+	return file_protocol_models_getLTV_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetTVLRequest) GetTokenAddress() string {
+func (x *GetLTVRequest) GetTokenAddress() string {
 	if x != nil {
 		return x.TokenAddress
 	}
 	return ""
 }
 
-func (x *GetTVLRequest) GetPoolAddress() string {
+func (x *GetLTVRequest) GetPoolAddress() string {
 	if x != nil {
 		return x.PoolAddress
 	}
 	return ""
 }
 
-func (x *GetTVLRequest) GetChainId() int64 {
+func (x *GetLTVRequest) GetChainId() int64 {
 	if x != nil {
 		return x.ChainId
 	}
 	return 0
 }
 
-func (x *GetTVLRequest) GetProtocol() string {
+func (x *GetLTVRequest) GetProtocol() string {
 	if x != nil {
 		return x.Protocol
 	}
 	return ""
 }
 
-type GetTVLResponse struct {
+type GetLTVResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TVL float64 `protobuf:"fixed64,1,opt,name=TVL,proto3" json:"TVL,omitempty"`
+	LTV float64 `protobuf:"fixed64,1,opt,name=LTV,proto3" json:"LTV,omitempty"`
 }
 
-func (x *GetTVLResponse) Reset() {
-	*x = GetTVLResponse{}
+func (x *GetLTVResponse) Reset() {
+	*x = GetLTVResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_protocol_models_getTVL_proto_msgTypes[1]
+		mi := &file_protocol_models_getLTV_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *GetTVLResponse) String() string {
+func (x *GetLTVResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTVLResponse) ProtoMessage() {}
+func (*GetLTVResponse) ProtoMessage() {}
 
-func (x *GetTVLResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_protocol_models_getTVL_proto_msgTypes[1]
+func (x *GetLTVResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protocol_models_getLTV_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -126,25 +126,25 @@ func (x *GetTVLResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTVLResponse.ProtoReflect.Descriptor instead.
-func (*GetTVLResponse) Descriptor() ([]byte, []int) {
-	return file_protocol_models_getTVL_proto_rawDescGZIP(), []int{1}
+// Deprecated: Use GetLTVResponse.ProtoReflect.Descriptor instead.
+func (*GetLTVResponse) Descriptor() ([]byte, []int) {
+	return file_protocol_models_getLTV_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetTVLResponse) GetTVL() float64 {
+func (x *GetLTVResponse) GetLTV() float64 {
 	if x != nil {
-		return x.TVL
+		return x.LTV
 	}
 	return 0
 }
 
-var File_protocol_models_getTVL_proto protoreflect.FileDescriptor
+var File_protocol_models_getLTV_proto protoreflect.FileDescriptor
 
-var file_protocol_models_getTVL_proto_rawDesc = []byte{
+var file_protocol_models_getLTV_proto_rawDesc = []byte{
 	0x0a, 0x1c, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
-	0x73, 0x2f, 0x67, 0x65, 0x74, 0x54, 0x56, 0x4c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08,
+	0x73, 0x2f, 0x67, 0x65, 0x74, 0x4c, 0x54, 0x56, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x22, 0x8b, 0x01, 0x0a, 0x0d, 0x47, 0x65, 0x74,
-	0x54, 0x56, 0x4c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f,
+	0x4c, 0x54, 0x56, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x22, 0x0a, 0x0c, 0x74, 0x6f,
 	0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x0c, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x20,
 	0x0a, 0x0b, 0x70, 0x6f, 0x6f, 0x6c, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20,
@@ -152,31 +152,31 @@ var file_protocol_models_getTVL_proto_rawDesc = []byte{
 	0x12, 0x18, 0x0a, 0x07, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28,
 	0x03, 0x52, 0x07, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x22, 0x22, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x54, 0x56, 0x4c,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x54, 0x56, 0x4c, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x01, 0x52, 0x03, 0x54, 0x56, 0x4c, 0x42, 0x19, 0x5a, 0x17, 0x70, 0x62,
+	0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x22, 0x22, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x4c, 0x54, 0x56,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x4c, 0x54, 0x56, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x01, 0x52, 0x03, 0x4c, 0x54, 0x56, 0x42, 0x19, 0x5a, 0x17, 0x70, 0x62,
 	0x2f, 0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x3b, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_protocol_models_getTVL_proto_rawDescOnce sync.Once
-	file_protocol_models_getTVL_proto_rawDescData = file_protocol_models_getTVL_proto_rawDesc
+	file_protocol_models_getLTV_proto_rawDescOnce sync.Once
+	file_protocol_models_getLTV_proto_rawDescData = file_protocol_models_getLTV_proto_rawDesc
 )
 
-func file_protocol_models_getTVL_proto_rawDescGZIP() []byte {
-	file_protocol_models_getTVL_proto_rawDescOnce.Do(func() {
-		file_protocol_models_getTVL_proto_rawDescData = protoimpl.X.CompressGZIP(file_protocol_models_getTVL_proto_rawDescData)
+func file_protocol_models_getLTV_proto_rawDescGZIP() []byte {
+	file_protocol_models_getLTV_proto_rawDescOnce.Do(func() {
+		file_protocol_models_getLTV_proto_rawDescData = protoimpl.X.CompressGZIP(file_protocol_models_getLTV_proto_rawDescData)
 	})
-	return file_protocol_models_getTVL_proto_rawDescData
+	return file_protocol_models_getLTV_proto_rawDescData
 }
 
-var file_protocol_models_getTVL_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_protocol_models_getTVL_proto_goTypes = []interface{}{
-	(*GetTVLRequest)(nil),  // 0: protocol.GetTVLRequest
-	(*GetTVLResponse)(nil), // 1: protocol.GetTVLResponse
+var file_protocol_models_getLTV_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_protocol_models_getLTV_proto_goTypes = []interface{}{
+	(*GetLTVRequest)(nil),  // 0: protocol.GetLTVRequest
+	(*GetLTVResponse)(nil), // 1: protocol.GetLTVResponse
 }
-var file_protocol_models_getTVL_proto_depIdxs = []int32{
+var file_protocol_models_getLTV_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -184,14 +184,14 @@ var file_protocol_models_getTVL_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_protocol_models_getTVL_proto_init() }
-func file_protocol_models_getTVL_proto_init() {
-	if File_protocol_models_getTVL_proto != nil {
+func init() { file_protocol_models_getLTV_proto_init() }
+func file_protocol_models_getLTV_proto_init() {
+	if File_protocol_models_getLTV_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_protocol_models_getTVL_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetTVLRequest); i {
+		file_protocol_models_getLTV_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetLTVRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -202,8 +202,8 @@ func file_protocol_models_getTVL_proto_init() {
 				return nil
 			}
 		}
-		file_protocol_models_getTVL_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetTVLResponse); i {
+		file_protocol_models_getLTV_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetLTVResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -219,18 +219,18 @@ func file_protocol_models_getTVL_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_protocol_models_getTVL_proto_rawDesc,
+			RawDescriptor: file_protocol_models_getLTV_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_protocol_models_getTVL_proto_goTypes,
-		DependencyIndexes: file_protocol_models_getTVL_proto_depIdxs,
-		MessageInfos:      file_protocol_models_getTVL_proto_msgTypes,
+		GoTypes:           file_protocol_models_getLTV_proto_goTypes,
+		DependencyIndexes: file_protocol_models_getLTV_proto_depIdxs,
+		MessageInfos:      file_protocol_models_getLTV_proto_msgTypes,
 	}.Build()
-	File_protocol_models_getTVL_proto = out.File
-	file_protocol_models_getTVL_proto_rawDesc = nil
-	file_protocol_models_getTVL_proto_goTypes = nil
-	file_protocol_models_getTVL_proto_depIdxs = nil
+	File_protocol_models_getLTV_proto = out.File
+	file_protocol_models_getLTV_proto_rawDesc = nil
+	file_protocol_models_getLTV_proto_goTypes = nil
+	file_protocol_models_getLTV_proto_depIdxs = nil
 }
