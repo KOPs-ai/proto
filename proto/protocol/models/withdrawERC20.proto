@@ -9,6 +9,7 @@ message BorrowedBalanceRequest {
   string tokenAddress = 2; // supplied token address
   int64 ChainID = 3;
   string poolAddress = 4;
+  string protocol = 5;
 }
 
 message BorrowedBalanceResponse {
