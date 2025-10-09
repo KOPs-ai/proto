@@ -9,6 +9,7 @@ import "protocol/models/getTVL.proto";
 import "protocol/models/getLTV.proto";
 import "protocol/models/getBorrowCap.proto";
 import "protocol/models/getSupplyCap.proto";
+import "protocol/models/getLiquidity.proto";
 
 option go_package = "pb/go/protocol;protocol";
 
@@ -23,4 +24,5 @@ service ProtocolService {
       returns (SuppliedBalanceResponse) {};
   rpc GetBorrowedBalance(BorrowedBalanceRequest)
       returns (BorrowedBalanceResponse) {};
+  rpc GetLiquidity(GetLiquidityRequest) returns (GetLiquidityResponse) {};
 }
