@@ -10,6 +10,7 @@ import "protocol/models/getLTV.proto";
 import "protocol/models/getBorrowCap.proto";
 import "protocol/models/getSupplyCap.proto";
 import "protocol/models/getLiquidity.proto";
+import "protocol/models/getSupplyLiquidityUniswapv3Balance.proto";
 
 option go_package = "pb/go/protocol;protocol";
 
@@ -25,4 +26,5 @@ service ProtocolService {
   rpc GetBorrowedBalance(BorrowedBalanceRequest)
       returns (BorrowedBalanceResponse) {};
   rpc GetLiquidity(GetLiquidityRequest) returns (GetLiquidityResponse) {};
+  rpc GetSupplyLiquidityUniswapv3Balance(GetSupplyLiquidityUniswapv3BalanceRequest) returns (GetSupplyLiquidityUniswapv3BalanceResponse) {};
 }

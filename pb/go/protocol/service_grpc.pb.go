@@ -27,6 +27,7 @@ type ProtocolServiceClient interface {
 	GetSuppliedBalance(ctx context.Context, in *SuppliedBalanceRequest, opts ...grpc.CallOption) (*SuppliedBalanceResponse, error)
 	GetBorrowedBalance(ctx context.Context, in *BorrowedBalanceRequest, opts ...grpc.CallOption) (*BorrowedBalanceResponse, error)
 	GetLiquidity(ctx context.Context, in *GetLiquidityRequest, opts ...grpc.CallOption) (*GetLiquidityResponse, error)
+	GetSupplyLiquidityUniswapv3Balance(ctx context.Context, in *GetSupplyLiquidityUniswapv3BalanceRequest, opts ...grpc.CallOption) (*GetSupplyLiquidityUniswapv3BalanceResponse, error)
 }
 
 type protocolServiceClient struct {
@@ -118,6 +119,15 @@ func (c *protocolServiceClient) GetLiquidity(ctx context.Context, in *GetLiquidi
 	return out, nil
 }
 
+func (c *protocolServiceClient) GetSupplyLiquidityUniswapv3Balance(ctx context.Context, in *GetSupplyLiquidityUniswapv3BalanceRequest, opts ...grpc.CallOption) (*GetSupplyLiquidityUniswapv3BalanceResponse, error) {
+	out := new(GetSupplyLiquidityUniswapv3BalanceResponse)
+	err := c.cc.Invoke(ctx, "/protocol.ProtocolService/GetSupplyLiquidityUniswapv3Balance", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProtocolServiceServer is the server API for ProtocolService service.
 // All implementations should embed UnimplementedProtocolServiceServer
 // for forward compatibility
@@ -131,6 +141,7 @@ type ProtocolServiceServer interface {
 	GetSuppliedBalance(context.Context, *SuppliedBalanceRequest) (*SuppliedBalanceResponse, error)
 	GetBorrowedBalance(context.Context, *BorrowedBalanceRequest) (*BorrowedBalanceResponse, error)
 	GetLiquidity(context.Context, *GetLiquidityRequest) (*GetLiquidityResponse, error)
+	GetSupplyLiquidityUniswapv3Balance(context.Context, *GetSupplyLiquidityUniswapv3BalanceRequest) (*GetSupplyLiquidityUniswapv3BalanceResponse, error)
 }
 
 // UnimplementedProtocolServiceServer should be embedded to have forward compatible implementations.
@@ -163,6 +174,9 @@ func (UnimplementedProtocolServiceServer) GetBorrowedBalance(context.Context, *B
 }
 func (UnimplementedProtocolServiceServer) GetLiquidity(context.Context, *GetLiquidityRequest) (*GetLiquidityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLiquidity not implemented")
+}
+func (UnimplementedProtocolServiceServer) GetSupplyLiquidityUniswapv3Balance(context.Context, *GetSupplyLiquidityUniswapv3BalanceRequest) (*GetSupplyLiquidityUniswapv3BalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSupplyLiquidityUniswapv3Balance not implemented")
 }
 
 // UnsafeProtocolServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -338,6 +352,24 @@ func _ProtocolService_GetLiquidity_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProtocolService_GetSupplyLiquidityUniswapv3Balance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSupplyLiquidityUniswapv3BalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProtocolServiceServer).GetSupplyLiquidityUniswapv3Balance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/protocol.ProtocolService/GetSupplyLiquidityUniswapv3Balance",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProtocolServiceServer).GetSupplyLiquidityUniswapv3Balance(ctx, req.(*GetSupplyLiquidityUniswapv3BalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProtocolService_ServiceDesc is the grpc.ServiceDesc for ProtocolService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -380,6 +412,10 @@ var ProtocolService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetLiquidity",
 			Handler:    _ProtocolService_GetLiquidity_Handler,
+		},
+		{
+			MethodName: "GetSupplyLiquidityUniswapv3Balance",
+			Handler:    _ProtocolService_GetSupplyLiquidityUniswapv3Balance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

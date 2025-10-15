@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protocol;
+
+option go_package = "pb/go/protocol;protocol";
+
+message GetSupplyLiquidityUniswapv3BalanceRequest {
+  string poolAddress = 1;
+  string userAddress = 2;
+  int64 chainId = 3;
+  string protocol = 4;
+}
+
+message GetSupplyLiquidityUniswapv3BalanceResponse {
+  string token0Address = 1;
+  string token1Address = 2;
+  string token0Amount = 3;
+  string token1Amount = 4;
+  uint64 token0Decimals = 5;
+  uint64 token1Decimals = 6;
+}
