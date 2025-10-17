@@ -46,7 +46,7 @@ var file_protocol_service_proto_rawDesc = []byte{
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f,
 	0x67, 0x65, 0x74, 0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x4c, 0x69, 0x71, 0x75, 0x69, 0x64, 0x69,
 	0x74, 0x79, 0x55, 0x6e, 0x69, 0x73, 0x77, 0x61, 0x70, 0x76, 0x33, 0x42, 0x61, 0x6c, 0x61, 0x6e,
-	0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xce, 0x06, 0x0a, 0x0f, 0x50, 0x72, 0x6f,
+	0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xa8, 0x07, 0x0a, 0x0f, 0x50, 0x72, 0x6f,
 	0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x3d, 0x0a, 0x06,
 	0x47, 0x65, 0x74, 0x41, 0x50, 0x52, 0x12, 0x17, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f,
 	0x6c, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x50, 0x52, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
@@ -99,9 +99,15 @@ var file_protocol_service_proto_rawDesc = []byte{
 	0x74, 0x1a, 0x34, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2e, 0x47, 0x65, 0x74,
 	0x53, 0x75, 0x70, 0x70, 0x6c, 0x79, 0x4c, 0x69, 0x71, 0x75, 0x69, 0x64, 0x69, 0x74, 0x79, 0x55,
 	0x6e, 0x69, 0x73, 0x77, 0x61, 0x70, 0x76, 0x33, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x19, 0x5a, 0x17, 0x70, 0x62, 0x2f,
-	0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x3b, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x63, 0x6f, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x58, 0x0a, 0x0f, 0x47, 0x65, 0x74,
+	0x41, 0x50, 0x52, 0x55, 0x6e, 0x69, 0x73, 0x77, 0x61, 0x70, 0x76, 0x33, 0x12, 0x20, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x50, 0x52, 0x55, 0x6e,
+	0x69, 0x73, 0x77, 0x61, 0x70, 0x76, 0x33, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x2e, 0x47, 0x65, 0x74, 0x41, 0x50, 0x52,
+	0x55, 0x6e, 0x69, 0x73, 0x77, 0x61, 0x70, 0x76, 0x33, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x00, 0x42, 0x19, 0x5a, 0x17, 0x70, 0x62, 0x2f, 0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x3b, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x6f, 0x6c, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_protocol_service_proto_goTypes = []interface{}{
@@ -115,16 +121,18 @@ var file_protocol_service_proto_goTypes = []interface{}{
 	(*BorrowedBalanceRequest)(nil),                     // 7: protocol.BorrowedBalanceRequest
 	(*GetLiquidityRequest)(nil),                        // 8: protocol.GetLiquidityRequest
 	(*GetSupplyLiquidityUniswapv3BalanceRequest)(nil),  // 9: protocol.GetSupplyLiquidityUniswapv3BalanceRequest
-	(*GetAPRResponse)(nil),                             // 10: protocol.GetAPRResponse
-	(*GetAPYResponse)(nil),                             // 11: protocol.GetAPYResponse
-	(*GetTVLResponse)(nil),                             // 12: protocol.GetTVLResponse
-	(*GetLTVResponse)(nil),                             // 13: protocol.GetLTVResponse
-	(*GetBorrowCapResponse)(nil),                       // 14: protocol.GetBorrowCapResponse
-	(*GetSupplyCapResponse)(nil),                       // 15: protocol.GetSupplyCapResponse
-	(*SuppliedBalanceResponse)(nil),                    // 16: protocol.SuppliedBalanceResponse
-	(*BorrowedBalanceResponse)(nil),                    // 17: protocol.BorrowedBalanceResponse
-	(*GetLiquidityResponse)(nil),                       // 18: protocol.GetLiquidityResponse
-	(*GetSupplyLiquidityUniswapv3BalanceResponse)(nil), // 19: protocol.GetSupplyLiquidityUniswapv3BalanceResponse
+	(*GetAPRUniswapv3Request)(nil),                     // 10: protocol.GetAPRUniswapv3Request
+	(*GetAPRResponse)(nil),                             // 11: protocol.GetAPRResponse
+	(*GetAPYResponse)(nil),                             // 12: protocol.GetAPYResponse
+	(*GetTVLResponse)(nil),                             // 13: protocol.GetTVLResponse
+	(*GetLTVResponse)(nil),                             // 14: protocol.GetLTVResponse
+	(*GetBorrowCapResponse)(nil),                       // 15: protocol.GetBorrowCapResponse
+	(*GetSupplyCapResponse)(nil),                       // 16: protocol.GetSupplyCapResponse
+	(*SuppliedBalanceResponse)(nil),                    // 17: protocol.SuppliedBalanceResponse
+	(*BorrowedBalanceResponse)(nil),                    // 18: protocol.BorrowedBalanceResponse
+	(*GetLiquidityResponse)(nil),                       // 19: protocol.GetLiquidityResponse
+	(*GetSupplyLiquidityUniswapv3BalanceResponse)(nil), // 20: protocol.GetSupplyLiquidityUniswapv3BalanceResponse
+	(*GetAPRUniswapv3Response)(nil),                    // 21: protocol.GetAPRUniswapv3Response
 }
 var file_protocol_service_proto_depIdxs = []int32{
 	0,  // 0: protocol.ProtocolService.GetAPR:input_type -> protocol.GetAPRRequest
@@ -137,18 +145,20 @@ var file_protocol_service_proto_depIdxs = []int32{
 	7,  // 7: protocol.ProtocolService.GetBorrowedBalance:input_type -> protocol.BorrowedBalanceRequest
 	8,  // 8: protocol.ProtocolService.GetLiquidity:input_type -> protocol.GetLiquidityRequest
 	9,  // 9: protocol.ProtocolService.GetSupplyLiquidityUniswapv3Balance:input_type -> protocol.GetSupplyLiquidityUniswapv3BalanceRequest
-	10, // 10: protocol.ProtocolService.GetAPR:output_type -> protocol.GetAPRResponse
-	11, // 11: protocol.ProtocolService.GetAPY:output_type -> protocol.GetAPYResponse
-	12, // 12: protocol.ProtocolService.GetTVL:output_type -> protocol.GetTVLResponse
-	13, // 13: protocol.ProtocolService.GetLTV:output_type -> protocol.GetLTVResponse
-	14, // 14: protocol.ProtocolService.GetBorrowCap:output_type -> protocol.GetBorrowCapResponse
-	15, // 15: protocol.ProtocolService.GetSupplyCap:output_type -> protocol.GetSupplyCapResponse
-	16, // 16: protocol.ProtocolService.GetSuppliedBalance:output_type -> protocol.SuppliedBalanceResponse
-	17, // 17: protocol.ProtocolService.GetBorrowedBalance:output_type -> protocol.BorrowedBalanceResponse
-	18, // 18: protocol.ProtocolService.GetLiquidity:output_type -> protocol.GetLiquidityResponse
-	19, // 19: protocol.ProtocolService.GetSupplyLiquidityUniswapv3Balance:output_type -> protocol.GetSupplyLiquidityUniswapv3BalanceResponse
-	10, // [10:20] is the sub-list for method output_type
-	0,  // [0:10] is the sub-list for method input_type
+	10, // 10: protocol.ProtocolService.GetAPRUniswapv3:input_type -> protocol.GetAPRUniswapv3Request
+	11, // 11: protocol.ProtocolService.GetAPR:output_type -> protocol.GetAPRResponse
+	12, // 12: protocol.ProtocolService.GetAPY:output_type -> protocol.GetAPYResponse
+	13, // 13: protocol.ProtocolService.GetTVL:output_type -> protocol.GetTVLResponse
+	14, // 14: protocol.ProtocolService.GetLTV:output_type -> protocol.GetLTVResponse
+	15, // 15: protocol.ProtocolService.GetBorrowCap:output_type -> protocol.GetBorrowCapResponse
+	16, // 16: protocol.ProtocolService.GetSupplyCap:output_type -> protocol.GetSupplyCapResponse
+	17, // 17: protocol.ProtocolService.GetSuppliedBalance:output_type -> protocol.SuppliedBalanceResponse
+	18, // 18: protocol.ProtocolService.GetBorrowedBalance:output_type -> protocol.BorrowedBalanceResponse
+	19, // 19: protocol.ProtocolService.GetLiquidity:output_type -> protocol.GetLiquidityResponse
+	20, // 20: protocol.ProtocolService.GetSupplyLiquidityUniswapv3Balance:output_type -> protocol.GetSupplyLiquidityUniswapv3BalanceResponse
+	21, // 21: protocol.ProtocolService.GetAPRUniswapv3:output_type -> protocol.GetAPRUniswapv3Response
+	11, // [11:22] is the sub-list for method output_type
+	0,  // [0:11] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

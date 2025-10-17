@@ -27,4 +27,5 @@ service ProtocolService {
       returns (BorrowedBalanceResponse) {};
   rpc GetLiquidity(GetLiquidityRequest) returns (GetLiquidityResponse) {};
   rpc GetSupplyLiquidityUniswapv3Balance(GetSupplyLiquidityUniswapv3BalanceRequest) returns (GetSupplyLiquidityUniswapv3BalanceResponse) {};
+  rpc GetAPRUniswapv3(GetAPRUniswapv3Request) returns (GetAPRUniswapv3Response) {};
 }

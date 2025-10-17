@@ -15,3 +15,16 @@ message GetAPRResponse {
   string supplyAPR = 1;
   string borrowAPR = 2;
 }
+
+message GetAPRUniswapv3Request {
+  string tokenAddress = 1;
+  string poolAddress = 2;
+  int64 chainId = 3;
+  string protocol = 4;
+  double upperTick = 5;
+  double lowerTick = 6;
+}
+
+message GetAPRUniswapv3Response {
+  string apr = 1;
+}
