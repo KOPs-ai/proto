@@ -27,4 +27,16 @@ message GetAPRUniswapv3Request {
 
 message GetAPRUniswapv3Response {
   string apr = 1;
+  string feeGrowthGlobal0Now = 2;
+  string feeGrowthGlobal1Now = 3;
+  string feeGrowthGlobal0Past = 4;
+  string feeGrowthGlobal1Past = 5;
+  string feeOutside0LowerNow = 6;
+  string feeOutside1LowerNow = 7;
+  string feeOutside0UpperNow = 8;
+  string feeOutside1UpperNow = 9;
+  string feeOutside0LowerPast = 10;
+  string feeOutside1LowerPast = 11;
+  string feeOutside0UpperPast = 12;
+  string feeOutside1UpperPast = 13;
 }
