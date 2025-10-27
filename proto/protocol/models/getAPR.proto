@@ -39,4 +39,7 @@ message GetAPRUniswapv3Response {
   string feeOutside1LowerPast = 11;
   string feeOutside0UpperPast = 12;
   string feeOutside1UpperPast = 13;
+  string tickNow = 14;
+  string tickSpacing = 15;
+  string FeeTier = 16;
 }
