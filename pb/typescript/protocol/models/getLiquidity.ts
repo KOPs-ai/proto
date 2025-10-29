@@ -2,25 +2,21 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.7
 //   protoc               v6.33.0
-// source: protocol/models/supplyERC20.proto
+// source: protocol/models/getLiquidity.proto
 
 /* eslint-disable */
 
 export const protobufPackage = "protocol";
 
-export interface SuppliedBalanceRequest {
-  userAddress: string;
-  /** supplied token address */
+export interface GetLiquidityRequest {
   tokenAddress: string;
-  ChainID: number;
   poolAddress: string;
+  chainId: number;
   protocol: string;
 }
 
-export interface SuppliedBalanceResponse {
-  tokenAddress: string;
-  balance: string;
-  decimals: string;
+export interface GetLiquidityResponse {
+  Liquidity: number;
 }
 
 export const PROTOCOL_PACKAGE_NAME = "protocol";

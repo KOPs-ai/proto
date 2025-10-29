@@ -10,6 +10,7 @@ message UsePermissionRequest {
   repeated Instruction txData = 3;
   string feeToken = 4;
   int64 feeChainId = 5;
+  string referenceId = 6;
 }
 
 message Call {
