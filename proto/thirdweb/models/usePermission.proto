@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package thirdweb;
+
+option go_package = "pb/go/thirdweb;thirdweb";
+
+message UsePermissionRequest {
+  string orchestratorAddress = 1;
+  string strategyId = 2;
+  string target = 3;
+  string callData = 4;
+  string referenceId = 5;
+  int32 chainId = 6;
+  string value = 7;
+}
+
+message UsePermissionResponse {
+  string txHash = 1;
+  string transactionStatus = 2;
+}

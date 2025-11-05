@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package thirdweb;
+import "thirdweb/models/usePermission.proto";
+
+option go_package = "pb/go/thirdweb;thirdweb";
+
+service ThirdwebService {
+  rpc UsePermission(UsePermissionRequest) returns (UsePermissionResponse) {};
+}
