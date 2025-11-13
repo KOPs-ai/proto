@@ -12,6 +12,7 @@ message UsePermissionRequest {
   string referenceId = 5;
   int32 chainId = 6;
   string value = 7;
+  string permissionId = 8;
 }
 
 message UsePermissionResponse {

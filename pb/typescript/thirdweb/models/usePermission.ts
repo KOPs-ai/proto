@@ -16,6 +16,7 @@ export interface UsePermissionRequest {
   referenceId: string;
   chainId: number;
   value: string;
+  permissionId: string;
 }
 
 export interface UsePermissionResponse {
